@@ -1,18 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
-  <test name="TestOnChrome(failed)" parallel="tests">
-    <parameter name="os" value="Win7x64-C1"/>
-    <parameter name="browser" value="Chrome56x64"/>
+  <test name="On Android(failed)" parallel="tests">
+    <parameter name="os" value="GalaxyS5-And44"/>
+    <parameter name="browser" value="MblChrome35"/>
     <classes>
       <class name="testSuite.LandingPage">
         <methods>
           <include name="setUp"/>
-          <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="testLandingPage"/>
+          <include name="setUp"/>
+          <include name="SurveyConfirmationPage" invocation-numbers="0"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- testSuite.LandingPage -->
     </classes>
-  </test> <!-- TestOnChrome(failed) -->
+  </test> <!-- On Android(failed) -->
+  <test name="On IOs(failed)" parallel="tests">
+    <parameter name="os" value="iPhone7Plus-iOS10sim"/>
+    <parameter name="browser" value="MblSafari10.0"/>
+    <classes>
+      <class name="testSuite.LandingPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="SurveyConfirmationPage" invocation-numbers="0"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- testSuite.LandingPage -->
+    </classes>
+  </test> <!-- On IOs(failed) -->
 </suite> <!-- Failed suite [Suite] -->

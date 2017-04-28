@@ -6,8 +6,9 @@
       <class name="testSuite.LandingPage">
         <methods>
           <include name="setUp"/>
-          <include name="tearDown"/>
+          <include name="SurveyConfirmationPage"/>
           <include name="testLandingPage"/>
+          <include name="testSurveyFlow"/>
         </methods>
       </class> <!-- testSuite.LandingPage -->
     </classes>
