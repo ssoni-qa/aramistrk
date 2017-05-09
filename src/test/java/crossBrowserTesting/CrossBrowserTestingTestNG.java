@@ -4,8 +4,6 @@ package crossBrowserTesting;
  */
 
 
-import java.net.URL;
-
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -17,6 +15,8 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -26,33 +26,31 @@ public class CrossBrowserTestingTestNG {
 	public String username = "dev%40aramisinteractive.com";
 	public String api_key = "ube96e1b5c957d36"; 
 	public String testScore = "pass";
-	public RemoteWebDriver driver;  
+	public  RemoteWebDriver driver;  
 	public WebDriverWait wc;
 
 
 	@BeforeClass
 	@org.testng.annotations.Parameters(value={"os", "browser"})
 	public void setUp(String os,String browser) throws Exception {
-		
-		System.out.println("Before class method is called.");
 
 		DesiredCapabilities capability = new DesiredCapabilities();
 		capability.setCapability("os_api_name", os);
 		capability.setCapability("browser_api_name", browser);
 		capability.setCapability("name", "AT Script - "+os);
-		capability.setCapability("record_video", "true");
-		capability.setCapability("record_network", "true");
+        capability.setCapability("screen_resolution", "1024x768");
+		//capability.setCapability("record_video", "true");
+		//capability.setCapability("record_network", "true");
 		driver = new RemoteWebDriver(
 				new URL("http://" + username + ":" + api_key + "@hub.crossbrowsertesting.com:80/wd/hub"),
 				capability);
 		//driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);				
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		wc= new WebDriverWait(driver,30);
 	}  
 
 	public JsonNode setScore(String seleniumTestId, String score) throws UnirestException {
 		// Mark a Selenium test as Pass/Fail
-		System.out.println("setScore Method is called .");
 		HttpResponse<JsonNode> response = Unirest.put("http://crossbrowsertesting.com/api/v3/selenium/{seleniumTestId}")
 				.basicAuth(username, api_key)
 				.routeParam("seleniumTestId", seleniumTestId)
@@ -63,7 +61,7 @@ public class CrossBrowserTestingTestNG {
 	}
 
 	public String takeSnapshot(String seleniumTestId) throws UnirestException {
-		System.out.println("TakSnapshot Method is called .");
+		System.out.println("Screen Shots Taken.");
 
 		/*
 		 * Takes a snapshot of the screen for the specified test.
@@ -83,7 +81,6 @@ public class CrossBrowserTestingTestNG {
 		/* 
 		 * sets the description for the given seleniemTestId and snapshotHash
 		 */
-		System.out.println("SetDescription Method is called .");
 
 		HttpResponse<JsonNode> response = Unirest.put("http://crossbrowsertesting.com/api/v3/selenium/{seleniumTestId}/snapshots/{snapshotHash}")
 				.basicAuth(username, api_key)
@@ -95,7 +92,7 @@ public class CrossBrowserTestingTestNG {
 	}
 	@AfterClass  
 	public void tearDown() throws Exception {  
-		System.out.println("After Method CBT is called.");
-		driver.close();  
+		driver.quit();
+		System.out.println("*****************All test Cases Execution Done******************");
 	}
 }

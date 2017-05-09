@@ -1,129 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="658978" started-at="2017-04-28T06:52:44Z" finished-at="2017-04-28T07:03:43Z">
+  <suite name="Suite" duration-ms="459224" started-at="2017-05-09T13:11:31Z" finished-at="2017-05-09T13:19:10Z">
     <groups>
     </groups>
-    <test name="On Chrome" duration-ms="315067" started-at="2017-04-28T06:52:44Z" finished-at="2017-04-28T06:57:59Z">
+    <test name="Window 10 Chrome" duration-ms="459224" started-at="2017-05-09T13:11:31Z" finished-at="2017-05-09T13:19:10Z">
       <class name="testSuite.LandingPage">
-        <test-method status="PASS" signature="setUp(java.lang.String, java.lang.String)[pri:0, instance:testSuite.LandingPage@5700d6b1]" name="setUp" is-config="true" duration-ms="22670" started-at="2017-04-28T12:22:44Z" finished-at="2017-04-28T12:23:07Z">
+        <test-method status="PASS" signature="setUp(java.lang.String, java.lang.String)[pri:0, instance:testSuite.LandingPage@6fd02e5]" name="setUp" is-config="true" duration-ms="28416" started-at="2017-05-09T18:41:31Z" finished-at="2017-05-09T18:41:59Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Win7x64-C1]]>
+                <![CDATA[Win10-E14]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[Chrome56x64]]>
+                <![CDATA[Chrome58x64]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testSuite.LandingPage@5700d6b1]" name="setUp" is-config="true" duration-ms="0" started-at="2017-04-28T12:23:07Z" finished-at="2017-04-28T12:23:07Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testSuite.LandingPage@6fd02e5]" name="setUp" is-config="true" duration-ms="0" started-at="2017-05-09T18:41:59Z" finished-at="2017-05-09T18:41:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testLandingPage(java.lang.String, java.lang.String)[pri:1, instance:testSuite.LandingPage@5700d6b1]" name="testLandingPage" duration-ms="292374" started-at="2017-04-28T12:23:07Z" finished-at="2017-04-28T12:27:59Z">
+        <test-method status="PASS" signature="testLandingPage(java.lang.String, java.lang.String)[pri:1, instance:testSuite.LandingPage@6fd02e5]" name="testLandingPage" duration-ms="421960" started-at="2017-05-09T18:41:59Z" finished-at="2017-05-09T18:49:01Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Win7x64-C1]]>
+                <![CDATA[Win10-E14]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[Chrome56x64]]>
+                <![CDATA[Chrome58x64]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLandingPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testSuite.LandingPage@6fd02e5]" name="tearDown" is-config="true" duration-ms="8798" started-at="2017-05-09T18:49:01Z" finished-at="2017-05-09T18:49:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
       </class> <!-- testSuite.LandingPage -->
-    </test> <!-- On Chrome -->
-    <test name="On Android" duration-ms="87886" started-at="2017-04-28T06:57:59Z" finished-at="2017-04-28T06:59:27Z">
-      <class name="testSuite.LandingPage">
-        <test-method status="PASS" signature="setUp(java.lang.String, java.lang.String)[pri:0, instance:testSuite.LandingPage@5649fd9b]" name="setUp" is-config="true" duration-ms="22374" started-at="2017-04-28T12:27:59Z" finished-at="2017-04-28T12:28:22Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[GalaxyS5-And44]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[MblChrome35]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testSuite.LandingPage@5649fd9b]" name="setUp" is-config="true" duration-ms="0" started-at="2017-04-28T12:28:22Z" finished-at="2017-04-28T12:28:22Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testLandingPage(java.lang.String, java.lang.String)[pri:1, instance:testSuite.LandingPage@5649fd9b]" name="testLandingPage" duration-ms="65507" started-at="2017-04-28T12:28:22Z" finished-at="2017-04-28T12:29:27Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[GalaxyS5-And44]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[MblChrome35]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testLandingPage -->
-      </class> <!-- testSuite.LandingPage -->
-    </test> <!-- On Android -->
-    <test name="On IOs" duration-ms="255999" started-at="2017-04-28T06:59:27Z" finished-at="2017-04-28T07:03:43Z">
-      <class name="testSuite.LandingPage">
-        <test-method status="PASS" signature="setUp(java.lang.String, java.lang.String)[pri:0, instance:testSuite.LandingPage@64bf3bbf]" name="setUp" is-config="true" duration-ms="87553" started-at="2017-04-28T12:29:27Z" finished-at="2017-04-28T12:30:55Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[iPhone7Plus-iOS10sim]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[MblSafari10.0]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testSuite.LandingPage@64bf3bbf]" name="setUp" is-config="true" duration-ms="0" started-at="2017-04-28T12:30:55Z" finished-at="2017-04-28T12:30:55Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testLandingPage(java.lang.String, java.lang.String)[pri:1, instance:testSuite.LandingPage@64bf3bbf]" name="testLandingPage" duration-ms="168440" started-at="2017-04-28T12:30:55Z" finished-at="2017-04-28T12:33:43Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[iPhone7Plus-iOS10sim]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[MblSafari10.0]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testLandingPage -->
-      </class> <!-- testSuite.LandingPage -->
-    </test> <!-- On IOs -->
+    </test> <!-- Window 10 Chrome -->
   </suite> <!-- Suite -->
 </testng-results>

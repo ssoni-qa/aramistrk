@@ -49,12 +49,12 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Suite">
-                    <span>testng.xml</span>
+                    <span>DesktopTestng.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
                   <a href="#" class="navigator-link " panel-name="testlist-Suite">
-                    <span class="test-stats">3 tests</span>
+                    <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods,   3 passed</span>
+                    <span class="method-stats">1 method,   1 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,17 +102,7 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="testSuite.LandingPage" hash-for-method="testLandingPage(Win7x64-C1, Chrome56x64)">testLandingPage(Win7x64-C1, Chrome56x64)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="testSuite.LandingPage" hash-for-method="testLandingPage(GalaxyS5-And44, MblChrome35)">testLandingPage(GalaxyS5-And44, MblChrome35)</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="testSuite.LandingPage" hash-for-method="testLandingPage(iPhone7Plus-iOS10sim, MblSafari10.0)">testLandingPage(iPhone7Plus-iOS10sim, MblSafari10.0)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="testSuite.LandingPage" hash-for-method="testLandingPage(Win10-E14, Chrome58x64)">testLandingPage(Win10-E14, Chrome58x64)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -135,26 +125,10 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="testLandingPage(Win7x64-C1, Chrome56x64)">
-                  </a> <!-- testLandingPage(Win7x64-C1, Chrome56x64) -->
+                  <a name="testLandingPage(Win10-E14, Chrome58x64)">
+                  </a> <!-- testLandingPage(Win10-E14, Chrome58x64) -->
                   <span class="method-name">testLandingPage</span>
-                  <span class="parameters">(Win7x64-C1, Chrome56x64)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testLandingPage(GalaxyS5-And44, MblChrome35)">
-                  </a> <!-- testLandingPage(GalaxyS5-And44, MblChrome35) -->
-                  <span class="method-name">testLandingPage</span>
-                  <span class="parameters">(GalaxyS5-And44, MblChrome35)</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="testLandingPage(iPhone7Plus-iOS10sim, MblSafari10.0)">
-                  </a> <!-- testLandingPage(iPhone7Plus-iOS10sim, MblSafari10.0) -->
-                  <span class="method-name">testLandingPage</span>
-                  <span class="parameters">(iPhone7Plus-iOS10sim, MblSafari10.0)</span>
+                  <span class="parameters">(Win10-E14, Chrome58x64)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -162,34 +136,20 @@
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">/Users/sujitsoni/Documents/workspace/aramistrk/testng.xml</span>
+            <span class="header-content">/Users/sujitsoni/Documents/workspace/aramistrk/DesktopTestng.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;1&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot;&gt;
-  &lt;test name=&quot;On Chrome&quot;&gt;
-    &lt;parameter name=&quot;os&quot; value=&quot;Win7x64-C1&quot;/&gt;
-    &lt;parameter name=&quot;browser&quot; value=&quot;Chrome56x64&quot;/&gt;
+&lt;suite thread-count=&quot;3&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Suite&quot; parallel=&quot;tests&quot;&gt;
+  &lt;test name=&quot;Window 10 Chrome&quot;&gt;
+    &lt;parameter name=&quot;os&quot; value=&quot;Win10-E14&quot;/&gt;
+    &lt;parameter name=&quot;browser&quot; value=&quot;Chrome58x64&quot;/&gt;
     &lt;classes&gt;
       &lt;class name=&quot;testSuite.LandingPage&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- On Chrome --&gt;
-  &lt;test name=&quot;On Android&quot;&gt;
-    &lt;parameter name=&quot;os&quot; value=&quot;GalaxyS5-And44&quot;/&gt;
-    &lt;parameter name=&quot;browser&quot; value=&quot;MblChrome35&quot;/&gt;
-    &lt;classes&gt;
-      &lt;class name=&quot;testSuite.LandingPage&quot;/&gt;
-    &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- On Android --&gt;
-  &lt;test name=&quot;On IOs&quot;&gt;
-    &lt;parameter name=&quot;os&quot; value=&quot;iPhone7Plus-iOS10sim&quot;/&gt;
-    &lt;parameter name=&quot;browser&quot; value=&quot;MblSafari10.0&quot;/&gt;
-    &lt;classes&gt;
-      &lt;class name=&quot;testSuite.LandingPage&quot;/&gt;
-    &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- On IOs --&gt;
+  &lt;/test&gt; &lt;!-- Window 10 Chrome --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -201,13 +161,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">On Chrome (1 class)</span>
-              </li>
-              <li>
-                <span class="test-name">On Android (1 class)</span>
-              </li>
-              <li>
-                <span class="test-name">On IOs (1 class)</span>
+                <span class="test-name">Window 10 Chrome (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -233,24 +187,16 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(3);
+data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testLandingPage')
 data.setCell(0, 2, 'testSuite.LandingPage')
-data.setCell(0, 3, 292374);
-data.setCell(1, 0, 1)
-data.setCell(1, 1, 'testLandingPage')
-data.setCell(1, 2, 'testSuite.LandingPage')
-data.setCell(1, 3, 168440);
-data.setCell(2, 0, 2)
-data.setCell(2, 1, 'testLandingPage')
-data.setCell(2, 2, 'testSuite.LandingPage')
-data.setCell(2, 3, 65507);
+data.setCell(0, 3, 421960);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 8 minutes</span>
+              <span class="suite-total-time">Total running time: 7 minutes</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -278,41 +224,21 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">testSuite.LandingPage</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUp(Win7x64-C1, Chrome56x64)</span>
+                <span class="method-name">setUp(Win10-E14, Chrome58x64)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-class before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">22670 ms</span>
+                <span class="method-start">28416 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">testLandingPage(Win7x64-C1, Chrome56x64)</span>
-                <span class="method-start">22678 ms</span>
+                <span class="method-name">testLandingPage(Win10-E14, Chrome58x64)</span>
+                <span class="method-start">28450 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-class before">
-                <span class="method-name">setUp(GalaxyS5-And44, MblChrome35)</span>
-                <span class="method-start">315077 ms</span>
-              </div> <!-- configuration-class before -->
-              <div class="configuration-class before">
-                <span class="method-name">setUp</span>
-                <span class="method-start">337451 ms</span>
-              </div> <!-- configuration-class before -->
-              <div class="test-method">
-                <span class="method-name">testLandingPage(GalaxyS5-And44, MblChrome35)</span>
-                <span class="method-start">337452 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-class before">
-                <span class="method-name">setUp(iPhone7Plus-iOS10sim, MblSafari10.0)</span>
-                <span class="method-start">402970 ms</span>
-              </div> <!-- configuration-class before -->
-              <div class="configuration-class before">
-                <span class="method-name">setUp</span>
-                <span class="method-start">490523 ms</span>
-              </div> <!-- configuration-class before -->
-              <div class="test-method">
-                <span class="method-name">testLandingPage(iPhone7Plus-iOS10sim, MblSafari10.0)</span>
-                <span class="method-start">490524 ms</span>
-              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">450412 ms</span>
+              </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
