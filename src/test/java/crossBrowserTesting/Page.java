@@ -71,16 +71,20 @@ public class Page {
 	@FindBy(id="i-input-35e8359f-517c-44d1-b22c-6b61140e024a-year")
 	public WebElement conYear;
 	
-	@FindBy(css="span.checkbox-material > span")
+	@FindBy(css=".checkbox-material>span")
 	public WebElement iConfirm;
-	
 	@FindBy(css="div.imageInner.pt > img")
 	public WebElement conContinueBtn;
 	
 	@FindBy(linkText="marketing partners")
 	public WebElement mktLink;
 	
-	@FindBy(className="remodal-close")
+	@FindBy(xpath="/html/body/div[8]/div/button")
 	public WebElement closeWindow;
+	
+	//Survey Offer Linkout Pages. 
+	
+	@FindBy(xpath="//button[@class='btn blockFormBtn diabetes-btns btn-raised']")
+	public WebElement linkoutBtn;
 
 }

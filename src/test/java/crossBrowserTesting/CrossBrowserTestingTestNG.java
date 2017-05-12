@@ -41,10 +41,10 @@ public class CrossBrowserTestingTestNG {
         capability.setCapability("screen_resolution", "1024x768");
 		//capability.setCapability("record_video", "true");
 		//capability.setCapability("record_network", "true");
-		driver = new RemoteWebDriver(
-				new URL("http://" + username + ":" + api_key + "@hub.crossbrowsertesting.com:80/wd/hub"),
-				capability);
-		//driver = new ChromeDriver();
+		//driver = new RemoteWebDriver(
+			//	new URL("http://" + username + ":" + api_key + "@hub.crossbrowsertesting.com:80/wd/hub"),
+			//	capability);
+		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		wc= new WebDriverWait(driver,30);
 	}  
@@ -92,7 +92,7 @@ public class CrossBrowserTestingTestNG {
 	}
 	@AfterClass  
 	public void tearDown() throws Exception {  
-		driver.quit();
+		//driver.quit();
 		System.out.println("*****************All test Cases Execution Done******************");
 	}
 }

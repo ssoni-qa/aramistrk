@@ -9,32 +9,14 @@
 			<class name="testSuite.LandingPage" />
 		</classes>
 	</test>
-	<!-- <test name="Window 10 Edge">
-		<parameter name="os" value="Win10-E15" />
-		<parameter name="browser" value="Edge15" />
-		<classes>
-			<class name="testSuite.LandingPage" />
-		</classes>
-	</test>
-	<test name="Window 7 - IE">
-		<parameter name="os" value="Win7x64-C2" />
-		<parameter name="browser" value="IE10" />
-		<classes>
-			<class name="testSuite.LandingPage" />
-		</classes>
-	</test> -->
-	<!-- <test name="Android Chrome">
-		<parameter name="os" value="Nexus6P-And60" />
-		<parameter name="browser" value="MblChrome57" />
-		<classes>
-			<class name="testSuite.LandingPage" />
-		</classes>
-	</test> Test
-	<test name="IPhone - Safari">
-		<parameter name="os" value="iPhone7Plus-iOS10sim" />
-		<parameter name="browser" value="MblSafari10.0" />
-		<classes>
-			<class name="testSuite.LandingPage" />
-		</classes>
-	</test> --><!-- Test -->
+	<!-- <test name="Window 10 Edge"> <parameter name="os" value="Win10-E15" 
+		/> <parameter name="browser" value="Edge15" /> <classes> <class name="testSuite.LandingPage" 
+		/> </classes> </test> <test name="Window 7 - IE"> <parameter name="os" value="Win7x64-C2" 
+		/> <parameter name="browser" value="IE10" /> <classes> <class name="testSuite.LandingPage" 
+		/> </classes> </test> -->
+	<!-- <test name="Android Chrome"> <parameter name="os" value="Nexus6P-And60" 
+		/> <parameter name="browser" value="MblChrome57" /> <classes> <class name="testSuite.LandingPage" 
+		/> </classes> </test> Test <test name="IPhone - Safari"> <parameter name="os" 
+		value="iPhone7Plus-iOS10sim" /> <parameter name="browser" value="MblSafari10.0" 
+		/> <classes> <class name="testSuite.LandingPage" /> </classes> </test> --><!-- Test -->
 </suite> <!-- Suite -->

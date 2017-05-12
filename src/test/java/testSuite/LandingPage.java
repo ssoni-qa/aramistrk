@@ -7,6 +7,7 @@ import crossBrowserTesting.Page;
 
 import static org.testng.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
@@ -17,7 +18,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LandingPage extends CrossBrowserTestingTestNG{
 	private String baseUrl;
 	String fname,lname,email,dom,dob,doy;
-	String snapshotHash;
+	Boolean run=true;
+	//String snapshotHash;
 
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
@@ -42,8 +44,6 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			System.out.println("Enter First Name.");
 			ele.firstName.clear();
 			ele.firstName.sendKeys("FirstName");
-			//driver.findElement(By.id("i-input-81dfe9a6-361c-4606-95f9-119ffd994f15-first-name")).clear();
-			//driver.findElement(By.id("i-input-81dfe9a6-361c-4606-95f9-119ffd994f15-first-name")).sendKeys("FirstName");
 			fname=ele.firstName.getAttribute("value");
 
 			System.out.println("Enter Last Name.");
@@ -56,8 +56,8 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			ele.emailAddress.sendKeys("dummyemail@domain.com");
 			email=ele.emailAddress.getAttribute("value");
 
-			snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-			myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
+			//snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
+			//myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
 			System.out.println("Select Month of birth.");
 			new Select(ele.month).selectByVisibleText("August");
 			dom=ele.month.getAttribute("value");
@@ -150,12 +150,12 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, ae.toString());
 				myTest.testScore = "fail";
 			}
-			snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-			myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
+			//snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
+			//myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
 			System.out.println("Check on click the submit button to advance past registration page");
 			try {
 				ele.continueBtn.click();
-				assertEquals(driver.findElement(By.cssSelector("p.mobile-h1")).getText(), "Take our short survey");
+				assertEquals(driver.findElement(By.xpath("//*[@id='i-22e28941-d893-4504-915b-2a8c79930572']/span/div/p[1]/strong/span")).getText(), "Take our short survey");
 				System.out.println("Pass.");
 			} catch (AssertionError ae) {
 				System.out.println("Fail :"+ae.getMessage());
@@ -165,7 +165,7 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			}
 
 
-			System.out.println("Information Page TC excuted.");
+			System.out.println("Landing Page TC excuted.");
 
 			//			Survey Flow
 			//			//			- provides responses to the pages with questions
@@ -187,8 +187,8 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				if(ele.yesBtn.isDisplayed() 
 						&& !ele.lablequest.getText().contains("FIRST NAME *"))
 				{
-					snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-					myTest.setDescription(driver.getSessionId().toString(), snapshotHash, ele.lablequest.getText());
+					//	snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
+					//	myTest.setDescription(driver.getSessionId().toString(), snapshotHash, ele.lablequest.getText());
 					System.out.println(ele.lablequest.getText());
 					System.out.println("Click on "+ele.yesBtn.getText()+" button.");
 					ele.yesBtn.click();
@@ -236,23 +236,15 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, e.toString());
 				myTest.testScore = "fail";
 			}
-			
-			System.out.println("Verify Marketing Link is Working.");
-			ele.mktLink.click();
-			wc.until(ExpectedConditions.elementToBeClickable(ele.closeWindow));
-			ele.closeWindow.click();
-			System.out.println("Marketing Link is working.");
-			
-			System.out.println("Pass.");
-			System.out.println("TC 3.2 - Vary between checking the “I CONFIRM” acceptance checkbox.");
 
+
+			System.out.println("TC 3.2 - Vary between checking the “I CONFIRM” acceptance checkbox.");
 			System.out.println("'I Confirm check box is unchecked.");
 			try {
 				assertEquals(ele.iConfirm.getCssValue("background-color"), "rgba(255, 255, 255, 1)");
 				System.out.println("Pass");
 
 			} catch (AssertionError e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("Fail.");
 				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
@@ -270,83 +262,123 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("Fail.");
-				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, e.toString());
+				//String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
+				//myTest.setDescription(driver.getSessionId().toString(), snapshotHash, e.toString());
 				myTest.testScore = "fail";
 
 			}
-			snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-			myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "Survey Confirmation Page");
-			System.out.println("Survey Confirmation Page completed");
+			System.out.println("Verify Marketing Link is Working.");
+			ele.mktLink.click();
+			Thread.sleep(2000);
+			wc.until(ExpectedConditions.elementToBeClickable(ele.closeWindow));
+			ele.closeWindow.click();
+			System.out.println("Marketing Link is working.");
+			Thread.sleep(2000);
+			System.out.println("Pass.");
 			ele.conContinueBtn.click();
+			System.out.println("Survey Confirmation Page completed");
+			System.out.println("***********************************************************************");
 			System.out.println("");
 			System.out.println("");
-			System.out.println("");
-			
-			//
-			//
-			//
-			//
+			System.out.println("Survey Offer Linkout Pages Started.");
+
+			try {
+				String parentHandle = driver.getWindowHandle(); 
+				driver.findElement(By.id("i-3bee30e7-91ed-4eb2-902d-765f0a373ad9")).click();
+				for (String winHandle : driver.getWindowHandles()) {
+					driver.switchTo().window(winHandle); 
+				}
+				System.out.println("On click URL : "+driver.getCurrentUrl());
+				driver.close();
+				driver.switchTo().window(parentHandle);
+
+			} catch (Exception e) {
+				System.out.println("Survey Page with 'Yes' and 'No' button is not displayed.");
+			}
+
+			System.out.println("Survey Option Page Radio");
+			Thread.sleep(5000);
+			driver.switchTo().frame(0);
+			while(true)
+			{
+
+				try {
+					wc.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
+					driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
+				} catch (Exception e) {
+
+					break;
+				}
+			}
+
+
+			List<WebElement> img =driver.findElements(By.cssSelector("input[value='Yes']"));
+			System.out.println(img.size());
+			for(WebElement imgclick:img)
+			{
+				String parentHandle = driver.getWindowHandle(); 
+				    Thread.sleep(5000);
+					System.out.println(imgclick.getAttribute("id"));
+					for (String winHandle : driver.getWindowHandles()) {
+						driver.switchTo().window(winHandle); 
+					}
+					System.out.println("On click URL : "+driver.getCurrentUrl());
+					//driver.close();
+					driver.switchTo().window(parentHandle);
+				
+			}
+
+
+
+
+
+
+
+
 			//			
-			//
 			//			
-			//
-			//			//			Survey Offer Linkout Pages
-			//			//			- vary between clicking ‘yes’ and ‘no’ on survey link out pages
-			//			//			- if you click yes, make sure it links out to a valid url
+			//			List<WebElement> radio=driver.findElements(By.cssSelector("input[value='Yes']"));
+			//			System.out.println("Total Number of Radio Button : "+radio.size());
+			//			for(WebElement valRadio:radio)
+			//			{
+			//				System.out.println("Getting Attribute "+valRadio.getAttribute("onclick"));
+			//				valRadio.click();
+			//			}
+			//			driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
 			//
 			//			try {
-			//
-			//
-			//				while(true){
-			//					System.out.println("Survey Offer Linkout Pages.");
-			//					Thread.sleep(5000);
-			//					String parentHandle = driver.getWindowHandle();
-			//					driver.switchTo().frame(0);
-			//                     System.out.println("Above if statement");
-			//					if(driver.findElement(By.cssSelector("span.iff-regular-container-header")).isDisplayed())
+			//				wc.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
+			//				if(driver.findElement(By.cssSelector("input[value='Yes']")).isDisplayed())
+			//				{
+			//					List<WebElement> radio2=driver.findElements(By.cssSelector("input[value='Yes']"));
+			//					System.out.println("Total Number of Radio Button : "+radio2.size());
+			//					for(WebElement valRadio2:radio2)
 			//					{
-			//						System.out.println("Sample Title : - "+driver.findElement(By.cssSelector("span.iff-regular-container-header")).getText());
-			//						if(driver.findElement(By.xpath("//input[@value='Yes']")).getAttribute("onclick").contains("Yes"));
-			//						{
-			//							driver.findElement(By.xpath("//input[@value='Yes']")).click();
-			//							for(String winHandle : driver.getWindowHandles()){
-			//								driver.switchTo().window(winHandle);
-			//							}
-			//							System.out.println("Marketing Link URL : "+driver.getCurrentUrl());
-			//							driver.close(); 
-			//							driver.switchTo().window(parentHandle);
-			//
-			//							Thread.sleep(5000);
-			//
-			//						}
-			//
+			//						System.out.println("Getting Attribute "+valRadio2.getAttribute("onclick"));
 			//					}
-			//					else
-			//					{
-			//						break;
-			//					}
-			//					continue;
-			//
+			//					driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
 			//				}
-			//
-			//
-			//
-			//
-			//
+			//				else{
+			//					List<WebElement> btn=driver.findElements(By.cssSelector("input[type='button']"));
+			//					System.out.println("Total Number of Radio Button : "+btn.size());
+			//					for(WebElement btnb:radio)
+			//					{
+			//						System.out.println("Getting Attribute "+btnb.getAttribute("name"));
+			//					}
+			//				}
 			//			} catch (Exception e) {
 			//				// TODO Auto-generated catch block
-			//				e.printStackTrace();
 			//			}
-			myTest.setScore(driver.getSessionId().toString(), myTest.testScore);
+
+			//myTest.setScore(driver.getSessionId().toString(), myTest.testScore);
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			myTest.testScore="fail";
 			myTest.setScore(driver.getSessionId().toString(), myTest.testScore);
-			String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-			myTest.setDescription(driver.getSessionId().toString(), snapshotHash, e.toString());
+			//String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
+			//myTest.setDescription(driver.getSessionId().toString(), snapshotHash, e.toString());
 			System.out.println("Excpetion Occured.");
-			e.printStackTrace();
 		}
 
 	}
