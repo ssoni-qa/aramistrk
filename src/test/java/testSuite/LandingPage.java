@@ -20,10 +20,11 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 	String fname,lname,email,dom,dob,doy;
 	Boolean run=true;
 	//String snapshotHash;
+	ArrayList<String> mainList = new ArrayList<String>();
 
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
-		baseUrl = "http://path.shareyourfreebies.com/";
+		baseUrl = "http://go.aramistrk.com/aff_c?offer_id=311&aff_id=1018";
 	}
 
 
@@ -297,79 +298,152 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			}
 
 			System.out.println("Survey Option Page Radio");
-			Thread.sleep(5000);
-			driver.switchTo().frame(0);
-			while(true)
-			{
 
-				try {
-					wc.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
-					driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
-				} catch (Exception e) {
+			WebDriverWait wc1= new WebDriverWait(driver, 10);
+			try {
+				wc1.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='i-3bee30e7-91ed-4eb2-902d-765f0a373ad9']")));
+				System.out.println("Yes I do button found.");
+				driver.findElement(By.xpath("//*[@id='i-3bee30e7-91ed-4eb2-902d-765f0a373ad9']")).click();
+				ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+				driver.switchTo().window(tabs2.get(1));
+				System.out.println("New Open Tab "+driver.getCurrentUrl());
+				driver.close();
+				driver.switchTo().window(tabs2.get(0));
+				Thread.sleep(5000);
 
-					break;
-				}
+			} catch (Exception e) {
+				System.out.println("Yes I do button not found.");
 			}
 
+			try {
+				wc1.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='i-c40d54a9-6e8b-46da-8ba6-6086786bfd41']")));
+				System.out.println("Small Image Banner is found.");
+				driver.findElement(By.xpath("//*[@id='i-c40d54a9-6e8b-46da-8ba6-6086786bfd41']")).click();
+				ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+				driver.switchTo().window(tabs2.get(1));
+				System.out.println("New Open Tab "+driver.getCurrentUrl());
+				driver.close();
+				driver.switchTo().window(tabs2.get(0));
 
-			List<WebElement> img =driver.findElements(By.cssSelector("input[value='Yes']"));
-			System.out.println(img.size());
-			for(WebElement imgclick:img)
-			{
-				String parentHandle = driver.getWindowHandle(); 
-				    Thread.sleep(5000);
-					System.out.println(imgclick.getAttribute("id"));
+			} catch (Exception e) {
+				System.out.println("Small Image Banner is found. button not found.");
+			}
+			Thread.sleep(5000);
+			driver.switchTo().frame(0);
+
+
+
+			while(true){
+				try {
+					wc1.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
+					driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
+					continue;
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					break;
+				}
+
+
+			}
+
+			while(true){
+				try {
+					List <WebElement> radioLink=driver.findElements(By.xpath("//div[@class='iff-campaign-container-regular']/div[2]/label[1]/input"));
+					for(WebElement id:radioLink)
+					{
+						String ids=id.getAttribute("id");
+						 if(!mainList.contains(ids))
+							 mainList.add(ids);
+					}
+					System.out.println("Size of array list now "+mainList.size());
+					String mainWindow= driver.getWindowHandle();
+					if(mainList.size()==1)
+					{
+						driver.findElement(By.xpath("//*[@id='"+mainList.get(0)+"']")).click();
+
+					}else if(mainList.size()==2)
+					{
+						driver.findElement(By.xpath("//*[@id='"+mainList.get(1)+"']")).click();
+
+					}
+					else if(mainList.size()==3)
+					{
+						driver.findElement(By.xpath("//*[@id='"+mainList.get(2)+"']")).click();
+
+					}
+					else if(mainList.size()==4)
+					{
+						driver.findElement(By.xpath("//*[@id='"+mainList.get(3)+"']")).click();
+
+					}
+
+
+
 					for (String winHandle : driver.getWindowHandles()) {
 						driver.switchTo().window(winHandle); 
 					}
-					System.out.println("On click URL : "+driver.getCurrentUrl());
-					//driver.close();
-					driver.switchTo().window(parentHandle);
-				
+					
+					driver.close();
+					driver.switchTo().window(mainWindow);
+					driver.switchTo().frame(0);
+				} catch (Exception e) {
+					break;
+				}
 			}
+			
+			System.out.println("Out for loop , successfully.");
+			
+			
+			
+			
+			while(true){
+				try {
+					List <WebElement> radioLink=driver.findElements(By.xpath("//div[@class='iff-campaign-container']"));
+					for(WebElement id:radioLink)
+					{
+						String ids=id.getAttribute("id");
+						 if(!mainList.contains(ids))
+							 mainList.add(ids);
+					}
+					System.out.println("Size of array list now "+mainList.size());
+					String mainWindow= driver.getWindowHandle();
+					if(mainList.size()==1)
+					{
+						driver.findElement(By.xpath("//*[@id='"+mainList.get(0)+"']/a")).click();
+
+					}else if(mainList.size()==2)
+					{
+						driver.findElement(By.xpath("//*[@id='"+mainList.get(1)+"']/a")).click();
+
+					}
+					else if(mainList.size()==3)
+					{
+						driver.findElement(By.xpath("//*[@id='"+mainList.get(2)+"']/a")).click();
+
+					}
+					else if(mainList.size()==4)
+					{
+						driver.findElement(By.xpath("//*[@id='"+mainList.get(3)+"']/a")).click();
+
+					}
 
 
 
-
-
-
-
-
-			//			
-			//			
-			//			List<WebElement> radio=driver.findElements(By.cssSelector("input[value='Yes']"));
-			//			System.out.println("Total Number of Radio Button : "+radio.size());
-			//			for(WebElement valRadio:radio)
-			//			{
-			//				System.out.println("Getting Attribute "+valRadio.getAttribute("onclick"));
-			//				valRadio.click();
-			//			}
-			//			driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
-			//
-			//			try {
-			//				wc.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
-			//				if(driver.findElement(By.cssSelector("input[value='Yes']")).isDisplayed())
-			//				{
-			//					List<WebElement> radio2=driver.findElements(By.cssSelector("input[value='Yes']"));
-			//					System.out.println("Total Number of Radio Button : "+radio2.size());
-			//					for(WebElement valRadio2:radio2)
-			//					{
-			//						System.out.println("Getting Attribute "+valRadio2.getAttribute("onclick"));
-			//					}
-			//					driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
-			//				}
-			//				else{
-			//					List<WebElement> btn=driver.findElements(By.cssSelector("input[type='button']"));
-			//					System.out.println("Total Number of Radio Button : "+btn.size());
-			//					for(WebElement btnb:radio)
-			//					{
-			//						System.out.println("Getting Attribute "+btnb.getAttribute("name"));
-			//					}
-			//				}
-			//			} catch (Exception e) {
-			//				// TODO Auto-generated catch block
-			//			}
-
+					for (String winHandle : driver.getWindowHandles()) {
+						driver.switchTo().window(winHandle); 
+					}
+					
+					driver.close();
+					driver.switchTo().window(mainWindow);
+					driver.switchTo().frame(0);
+				} catch (Exception e) {
+					break;
+				}
+			}
+			
+			System.out.println("Out for loop , successfully.");
+			
+			
 			//myTest.setScore(driver.getSessionId().toString(), myTest.testScore);
 
 		} catch (Exception e) {
