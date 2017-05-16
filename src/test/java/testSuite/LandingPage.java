@@ -2,6 +2,11 @@ package testSuite;
 
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import com.relevantcodes.extentreports.model.Log;
+
 import crossBrowserTesting.CrossBrowserTestingTestNG;
 import crossBrowserTesting.Page;
 
@@ -22,7 +27,7 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 	//String snapshotHash;
 	ArrayList<String> mainList = new ArrayList<String>();
 	ArrayList<String> ImageList = new ArrayList<String>();
-
+	ExtentTest test,test1,test2,test3,test4;
 
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
@@ -34,16 +39,24 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 	@Test(priority=1)
 	@org.testng.annotations.Parameters(value={"os", "browser"})
 	public void testLandingPage(String os,String browser) throws Exception {
+		test = extent.startTest("Landing Page."," - check to ensure all landing page fields are being auto-filled with the specified user parameters."
+				+ " - sometimes check the box for 'I am a Homeowner' and sometimes not"
+				+ "- select other registration page checkboxes on and off at random "
+				+ "- select the “Privacy Policy & Terms” checkbox before proceeding (must be checked in order to advance) "
+				+ "- click the submit button to advance past registration page");
 		CrossBrowserTestingTestNG myTest = new CrossBrowserTestingTestNG();
 		Page ele=PageFactory.initElements(driver, Page.class);
 		try {
 			System.out.println("----Test Running On ---- >"+browser +" On Platform "+os);
+			test.log(LogStatus.INFO, "----Test Running On ---- >"+browser +" On Platform "+os);
 			System.out.println("Device name - "+os+" Browser Name - "+browser);
-			//		try {
+			test.log(LogStatus.INFO, "Device name - "+os+" Browser Name - "+browser);
 			System.out.println("Test Scenario for Landing Page.");
 			System.out.println("Open Url.");
-			driver.get(baseUrl + "/?transaction_id=102526122115171190748812216317&aff_id=1018&offer_id=311&url_id={url_id}&firstname={firstname}&lastname={lastname}&email={email}&dob-m={dob-m}&dob-d={dob-d}&dob-y={dob-y}&gender={gender}&address={address}&phone={phone}&city={city2}&state={state}&zip={zip}&aff_sub=&aff_sub2=&aff_sub3=&aff_sub4=&aff_sub5=&i={i}");
-
+			test.log(LogStatus.INFO, "Open Url - "+baseUrl);
+			driver.get(baseUrl);
+			test.log(LogStatus.FAIL,
+					"" + test.addScreenCapture(captureScreenMethod(dest)));
 			System.out.println("Enter First Name.");
 			ele.firstName.clear();
 			ele.firstName.sendKeys("FirstName");
@@ -100,10 +113,13 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			System.out.println("TC : Check-Box can checked.");
 			try {
 				ele.iAggree.click();
+				test.log(LogStatus.INFO, "Checked 'I AGree' checkbox.");
 				Thread.sleep(2000);
 				Assert.assertEquals(ele.iAggree.getCssValue("background-color"),
 						"rgba(255, 57, 88, 1)");
 				System.out.println("Pass.");
+				test.log(LogStatus.INFO,
+						"" + test.addScreenCapture(captureScreenMethod(dest)));
 
 			} catch (AssertionError ae) {
 				System.out.println("Fail :"+ae.getMessage());
@@ -129,10 +145,13 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			System.out.println("TC : Check-Box can checked.");
 			try {
 				ele.homeOwner.click();
+				test.log(LogStatus.INFO, "Check on 'I am Homeowner' checkbox.");
 				Thread.sleep(2000);
 				assertEquals(ele.homeOwner.getCssValue("background-color"),
 						"rgba(255, 57, 88, 1)");
 				System.out.println("Pass.");
+				test.log(LogStatus.INFO,
+						"" + test.addScreenCapture(captureScreenMethod(dest)));
 			} catch (AssertionError ae) {
 				System.out.println("Fail :"+ae.getMessage());
 				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
@@ -157,10 +176,13 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			//myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
 			System.out.println("Check on click the submit button to advance past registration page");
 			ele.continueBtn.click();
+			extent.endTest(test);
+			
 
 
-
+           
 			System.out.println("Landing Page TC excuted.");
+			test1 = extent.startTest("Survey Flow.");
 
 			//			Survey Flow
 			//			//			- provides responses to the pages with questions
@@ -185,8 +207,13 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 					//	snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
 					//	myTest.setDescription(driver.getSessionId().toString(), snapshotHash, ele.lablequest.getText());
 					System.out.println(ele.lablequest.getText());
+					test1.log(LogStatus.INFO, ""+ele.lablequest.getText());
 					System.out.println("Click on "+ele.yesBtn.getText()+" button.");
+					test1.log(LogStatus.INFO,
+							"" + test.addScreenCapture(captureScreenMethod(dest)));
 					ele.yesBtn.click();
+					test1.log(LogStatus.INFO, ""+ele.yesBtn.getText()+" button.");
+
 					continue;
 				}
 				else
@@ -195,6 +222,11 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				}
 
 			}
+			
+			extent.endTest(test1);
+			
+			test2=extent.startTest("Survey Confirmation Page");
+			
 			try {
 				assertEquals(driver.findElement(By.cssSelector("span > span")).getText(), "CONFIRM YOUR INFORMATION");
 			} catch (AssertionError e) {
@@ -204,15 +236,16 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				myTest.testScore = "fail";
 			}
 
-
+			test2.log(LogStatus.FAIL,
+					"" + test1.addScreenCapture(captureScreenMethod(dest)));
 			System.out.println("");
 			System.out.println("");
 			System.out.println("");
 			System.out.println("Test Case 3 - Survey Confirmation Page.");
 			//		Survey Confirmation Page
 			//		- all fields should be auto-filled
-			//		- vary between checking the “I CONFIRM” acceptance checkbox
-			//		- make sure the “marketing partners” link is working
+			//		- vary between checking the I Confirm acceptance checkbox
+			//		- make sure the marketing Link is working
 			//		- select large CONTINUE button
 			Select dom=new Select(ele.conMonth);
 			Select dod=new Select(ele.conDay);
@@ -220,10 +253,13 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			System.out.println("TC 3.1 -Check all filed must be auto filled with correct data.");
 			try {
 				assertEquals(lname,"Last Name");
+				test2.log(LogStatus.INFO, "Re");
 				assertEquals(email,"dummyemail@domain.com");
 				assertEquals(dom.getFirstSelectedOption().getText(), "August");
 				assertEquals(dod.getFirstSelectedOption().getText(), "26");
 				assertEquals(doy.getFirstSelectedOption().getText(), "1988");
+				test2.log(LogStatus.INFO, "Checked all filed are auto filled with correct data.");
+
 			} catch (AssertionError e) {
 				System.out.println("Fail");
 				e.printStackTrace();
@@ -232,8 +268,8 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				myTest.testScore = "fail";
 			}
 
-
-			System.out.println("TC 3.2 - Vary between checking the “I CONFIRM” acceptance checkbox.");
+            extent.endTest(test2);
+			System.out.println("TC 3.2 - Vary between checking the 'I CONFIRM' acceptance checkbox.");
 			System.out.println("'I Confirm check box is unchecked.");
 			try {
 				assertEquals(ele.iConfirm.getCssValue("background-color"), "rgba(255, 255, 255, 1)");
@@ -254,7 +290,6 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				assertEquals(ele.iConfirm.getCssValue("background-color"), "rgba(255, 57, 88, 1)");
 				System.out.println("Pass");
 			} catch (AssertionError e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				System.out.println("Fail.");
 				//String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
@@ -290,6 +325,7 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			} catch (Exception e) {
 				System.out.println("Survey Page with 'Yes' and 'No' button is not displayed.");
 			}
+			String parentHandle = driver.getWindowHandle(); 
 
 			System.out.println("Survey Option Page Radio");
 
@@ -303,7 +339,6 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				System.out.println("New Open Tab "+driver.getCurrentUrl());
 				driver.close();
 				driver.switchTo().window(tabs2.get(0));
-				Thread.sleep(5000);
 
 			} catch (Exception e) {
 				System.out.println("Yes I do button not found.");
@@ -448,11 +483,20 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 					break;
 				}
 			}
-
-			driver.switchTo().defaultContent();
-			driver.findElement(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']"));
-			//driver.close();
-
+			System.out.println("Now Switic.......");
+			driver.switchTo().window(parentHandle);
+			wc.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']"))));
+			driver.findElement(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']")).click();
+			for (String winHandle : driver.getWindowHandles()) {
+				driver.switchTo().window(winHandle); 
+			}
+			System.out.println(driver.getCurrentUrl());
+			driver.close();
+			for (String winHandle : driver.getWindowHandles()) {
+				driver.switchTo().window(winHandle); 
+			}
+			System.out.println(driver.getCurrentUrl());
+			driver.close();
 
 
 			//myTest.setScore(driver.getSessionId().toString(), myTest.testScore);

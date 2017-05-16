@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite thread-count="3" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
+  <test name="Window 10 Chrome(failed)" parallel="tests">
+    <parameter name="os" value="Win10-E14"/>
+    <parameter name="browser" value="Chrome58x64"/>
     <classes>
       <class name="testSuite.LandingPage">
         <methods>
           <include name="setUp"/>
-          <include name="testLandingPage"/>
+          <include name="setUp"/>
+          <include name="testLandingPage" invocation-numbers="0"/>
         </methods>
       </class> <!-- testSuite.LandingPage -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Window 10 Chrome(failed) -->
+</suite> <!-- Failed suite [Suite] -->

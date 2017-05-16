@@ -10,7 +10,6 @@
           <include name="setUp"/>
           <include name="setUp"/>
           <include name="testLandingPage" invocation-numbers="0"/>
-          <include name="tearDown"/>
         </methods>
       </class> <!-- testSuite.LandingPage -->
     </classes>

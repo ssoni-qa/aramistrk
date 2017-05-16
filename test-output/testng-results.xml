@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="132016" started-at="2017-05-16T13:35:34Z" finished-at="2017-05-16T13:37:46Z">
+  <suite name="Suite" duration-ms="621648" started-at="2017-05-16T16:44:31Z" finished-at="2017-05-16T16:54:53Z">
     <groups>
     </groups>
-    <test name="Window 10 Chrome" duration-ms="132016" started-at="2017-05-16T13:35:34Z" finished-at="2017-05-16T13:37:46Z">
+    <test name="Window 10 Chrome" duration-ms="621648" started-at="2017-05-16T16:44:31Z" finished-at="2017-05-16T16:54:53Z">
       <class name="testSuite.LandingPage">
-        <test-method status="PASS" signature="setUp(java.lang.String, java.lang.String)[pri:0, instance:testSuite.LandingPage@dc24521]" name="setUp" is-config="true" duration-ms="1909" started-at="2017-05-16T19:05:34Z" finished-at="2017-05-16T19:05:36Z">
+        <test-method status="PASS" signature="setUp(java.lang.String, java.lang.String)[pri:0, instance:testSuite.LandingPage@6451e]" name="setUp" is-config="true" duration-ms="4874" started-at="2017-05-16T22:14:31Z" finished-at="2017-05-16T22:14:36Z">
           <params>
             <param index="0">
               <value>
@@ -23,11 +23,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:testSuite.LandingPage@dc24521]" name="setUp" is-config="true" duration-ms="0" started-at="2017-05-16T19:05:36Z" finished-at="2017-05-16T19:05:36Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:testSuite.LandingPage@6451e]" name="setUp" is-config="true" duration-ms="0" started-at="2017-05-16T22:14:36Z" finished-at="2017-05-16T22:14:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testLandingPage(java.lang.String, java.lang.String)[pri:1, instance:testSuite.LandingPage@dc24521]" name="testLandingPage" duration-ms="130081" started-at="2017-05-16T19:05:36Z" finished-at="2017-05-16T19:07:46Z">
+        <test-method status="PASS" signature="testLandingPage(java.lang.String, java.lang.String)[pri:1, instance:testSuite.LandingPage@6451e]" name="testLandingPage" duration-ms="612451" started-at="2017-05-16T22:14:36Z" finished-at="2017-05-16T22:24:49Z">
           <params>
             <param index="0">
               <value>
@@ -43,7 +43,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLandingPage -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testSuite.LandingPage@dc24521]" name="tearDown" is-config="true" duration-ms="1" started-at="2017-05-16T19:07:46Z" finished-at="2017-05-16T19:07:46Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testSuite.LandingPage@6451e]" name="tearDown" is-config="true" duration-ms="4291" started-at="2017-05-16T22:24:49Z" finished-at="2017-05-16T22:24:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
