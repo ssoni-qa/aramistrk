@@ -21,6 +21,8 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 	Boolean run=true;
 	//String snapshotHash;
 	ArrayList<String> mainList = new ArrayList<String>();
+	ArrayList<String> ImageList = new ArrayList<String>();
+
 
 	@BeforeClass(alwaysRun = true)
 	public void setUp() throws Exception {
@@ -154,16 +156,8 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			//snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
 			//myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
 			System.out.println("Check on click the submit button to advance past registration page");
-			try {
-				ele.continueBtn.click();
-				assertEquals(driver.findElement(By.xpath("//*[@id='i-22e28941-d893-4504-915b-2a8c79930572']/span/div/p[1]/strong/span")).getText(), "Take our short survey");
-				System.out.println("Pass.");
-			} catch (AssertionError ae) {
-				System.out.println("Fail :"+ae.getMessage());
-				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, ae.toString());
-				myTest.testScore = "fail";
-			}
+			ele.continueBtn.click();
+
 
 
 			System.out.println("Landing Page TC excuted.");
@@ -339,7 +333,6 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 					driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
 					continue;
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					break;
 				}
 
@@ -352,8 +345,8 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 					for(WebElement id:radioLink)
 					{
 						String ids=id.getAttribute("id");
-						 if(!mainList.contains(ids))
-							 mainList.add(ids);
+						if(!mainList.contains(ids))
+							mainList.add(ids);
 					}
 					System.out.println("Size of array list now "+mainList.size());
 					String mainWindow= driver.getWindowHandle();
@@ -378,11 +371,11 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 					}
 
 
-
 					for (String winHandle : driver.getWindowHandles()) {
 						driver.switchTo().window(winHandle); 
 					}
-					
+
+					System.out.println("Open Url :"+driver.getCurrentUrl());
 					driver.close();
 					driver.switchTo().window(mainWindow);
 					driver.switchTo().frame(0);
@@ -390,60 +383,78 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 					break;
 				}
 			}
-			
+
 			System.out.println("Out for loop , successfully.");
-			
-			
-			
-			
+
+
+			System.out.println("Working on Large Image Baneer .");
+
+
+
 			while(true){
 				try {
-					List <WebElement> radioLink=driver.findElements(By.xpath("//div[@class='iff-campaign-container']"));
+					wc1.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
+					driver.findElement(By.xpath("//button[contains(text(),'Continue')]")).click();
+					continue;
+				} catch (Exception e) {
+					break;
+				}
+
+
+			}
+
+			while(true){
+				try {
+					List <WebElement> radioLink=driver.findElements(By.xpath("//*[@class='iff-campaign-container']"));
 					for(WebElement id:radioLink)
 					{
 						String ids=id.getAttribute("id");
-						 if(!mainList.contains(ids))
-							 mainList.add(ids);
+						if(!ImageList.contains(ids))
+							ImageList.add(ids);
 					}
-					System.out.println("Size of array list now "+mainList.size());
-					String mainWindow= driver.getWindowHandle();
-					if(mainList.size()==1)
+					System.out.println("Size of array list now "+ImageList.size());
+					String mainWindow1= driver.getWindowHandle();
+					if(ImageList.size()==1)
 					{
-						driver.findElement(By.xpath("//*[@id='"+mainList.get(0)+"']/a")).click();
+						driver.findElement(By.xpath("//*[@id='"+ImageList.get(0)+"']/a")).click();
 
-					}else if(mainList.size()==2)
+					}else if(ImageList.size()==2)
 					{
-						driver.findElement(By.xpath("//*[@id='"+mainList.get(1)+"']/a")).click();
-
-					}
-					else if(mainList.size()==3)
-					{
-						driver.findElement(By.xpath("//*[@id='"+mainList.get(2)+"']/a")).click();
+						driver.findElement(By.xpath("//*[@id='"+ImageList.get(1)+"']/a")).click();
 
 					}
-					else if(mainList.size()==4)
+					else if(ImageList.size()==3)
 					{
-						driver.findElement(By.xpath("//*[@id='"+mainList.get(3)+"']/a")).click();
+						driver.findElement(By.xpath("//*[@id='"+ImageList.get(2)+"']/a")).click();
 
 					}
+					else if(ImageList.size()==4)
+					{
+						driver.findElement(By.xpath("//*[@id='"+ImageList.get(3)+"']/a")).click();
 
+					}
 
 
 					for (String winHandle : driver.getWindowHandles()) {
 						driver.switchTo().window(winHandle); 
 					}
-					
+
+					System.out.println("Open Url :"+driver.getCurrentUrl());
 					driver.close();
-					driver.switchTo().window(mainWindow);
+					driver.switchTo().window(mainWindow1);
 					driver.switchTo().frame(0);
 				} catch (Exception e) {
+					//e.printStackTrace();
 					break;
 				}
 			}
-			
-			System.out.println("Out for loop , successfully.");
-			
-			
+
+			driver.switchTo().defaultContent();
+			driver.findElement(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']"));
+			//driver.close();
+
+
+
 			//myTest.setScore(driver.getSessionId().toString(), myTest.testScore);
 
 		} catch (Exception e) {
