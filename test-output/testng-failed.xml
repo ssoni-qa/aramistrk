@@ -8,6 +8,7 @@
       <class name="testSuite.LandingPage">
         <methods>
           <include name="setUp"/>
+          <include name="done"/>
           <include name="setUp"/>
           <include name="testLandingPage" invocation-numbers="0"/>
         </methods>

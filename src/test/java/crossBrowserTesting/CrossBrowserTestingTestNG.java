@@ -55,16 +55,16 @@ public class CrossBrowserTestingTestNG {
 		capability.setCapability("browser_api_name", browser);
 		capability.setCapability("name", "AT Script - "+os);
 		capability.setCapability("screen_resolution", "1024x768");
-		//capability.setCapability("record_video", "true");
-		//capability.setCapability("record_network", "true");
+		//		capability.setCapability("record_video", "true");
+		//		capability.setCapability("record_network", "true");
 		driver = new RemoteWebDriver(
-			new URL("http://" + username + ":" + api_key + "@hub.crossbrowsertesting.com:80/wd/hub"),
-		capability);
-		/*System.setProperty("webdriver.chrome.driver", "C:/Users/COD/Desktop/chromedriver.exe");
-		driver = new ChromeDriver();*/
+				new URL("http://" + username + ":" + api_key + "@hub.crossbrowsertesting.com:80/wd/hub"),
+				capability);
+		//System.setProperty("webdriver.chrome.driver", "C:/Users/COD/Desktop/chromedriver.exe");
+		//driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		wc= new WebDriverWait(driver,30);
-		extent = new ExtentReports("./etestReport/"+os+".html",false,NetworkMode.OFFLINE);
+		extent = new ExtentReports("./etestReport/"+os+".html",true,NetworkMode.OFFLINE);
 
 	}  
 	public   String captureScreenMethod(String dest) throws IOException
@@ -121,7 +121,7 @@ public class CrossBrowserTestingTestNG {
 		return response.getBody();
 	}
 	@AfterClass  
-	public void tearDown() throws Exception {  
+	public void done() throws Exception {  
 		driver.quit();
 		extent.flush();
 		System.out.println("*****************All test Cases Execution Done******************");

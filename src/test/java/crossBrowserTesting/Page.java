@@ -60,6 +60,9 @@ public class Page {
 	@FindBy(css="label.form-label")
 	public WebElement lablequest;
 	
+	@FindBy(xpath="//span[contains(text(),'Yes')]")
+	public WebElement yesButton;
+	
 	//Confirm you Information 
 	
 	@FindBy(id="i-input-35e8359f-517c-44d1-b22c-6b61140e024a-month")
@@ -86,5 +89,19 @@ public class Page {
 	
 	@FindBy(xpath="//button[@class='btn blockFormBtn diabetes-btns btn-raised']")
 	public WebElement linkoutBtn;
+	
+	@FindBy(id="i-3bee30e7-91ed-4eb2-902d-765f0a373ad9")
+	public WebElement btn;
+	
+	@FindBy(xpath="//*[@id='i-c40d54a9-6e8b-46da-8ba6-6086786bfd41']")
+	public WebElement imgbtn;
+	
+	@FindBy(xpath="//button[contains(text(),'Continue')]")
+	public WebElement imgbtn1;
+	
+	//Small Banner Offer Flow.
+	@FindBy(xpath="//div[@class='iff-campaign-container-regular']/div[2]/label[1]/input")
+	public WebElement radio;
+	
 
 }
