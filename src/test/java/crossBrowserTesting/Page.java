@@ -91,7 +91,7 @@ public class Page {
 	public WebElement linkoutBtn;
 	
 	@FindBy(id="i-3bee30e7-91ed-4eb2-902d-765f0a373ad9")
-	public WebElement btn;
+	public WebElement yesIDoBtn;
 	
 	@FindBy(xpath="//*[@id='i-c40d54a9-6e8b-46da-8ba6-6086786bfd41']")
 	public WebElement imgbtn;

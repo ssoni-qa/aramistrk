@@ -1,12 +1,10 @@
 package crossBrowserTesting;
-/*
- * Run from the xml suit file
- */
 
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -35,7 +33,7 @@ public class CrossBrowserTestingTestNG {
 	public String username = "dev%40aramisinteractive.com";
 	public String api_key = "ube96e1b5c957d36"; 
 	public String testScore = "pass";
-	public  RemoteWebDriver driver;  
+	public  WebDriver driver;  
 	public WebDriverWait wc;
 	//For Reporting
 	public  ExtentReports extent;
@@ -55,15 +53,15 @@ public class CrossBrowserTestingTestNG {
 		capability.setCapability("browser_api_name", browser);
 		capability.setCapability("name", "AT Script - "+os);
 		capability.setCapability("screen_resolution", "1024x768");
-		//		capability.setCapability("record_video", "true");
-		//		capability.setCapability("record_network", "true");
+		capability.setCapability("record_video", "true");
+		capability.setCapability("record_network", "true");
 		driver = new RemoteWebDriver(
 				new URL("http://" + username + ":" + api_key + "@hub.crossbrowsertesting.com:80/wd/hub"),
 				capability);
-		//System.setProperty("webdriver.chrome.driver", "C:/Users/COD/Desktop/chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "C:/Users/COD/Desktop/chromedriver.exe");*/
 		//driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		wc= new WebDriverWait(driver,30);
+		wc= new WebDriverWait(driver,10);
 		extent = new ExtentReports("./etestReport/"+os+".html",true,NetworkMode.OFFLINE);
 
 	}  
@@ -122,7 +120,7 @@ public class CrossBrowserTestingTestNG {
 	}
 	@AfterClass  
 	public void done() throws Exception {  
-		driver.quit();
+		//driver.quit();
 		extent.flush();
 		System.out.println("*****************All test Cases Execution Done******************");
 	}

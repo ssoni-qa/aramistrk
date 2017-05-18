@@ -22,7 +22,7 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 	private String baseUrl;
 	String fname,lname,email,dom,dob,doy;
 	Boolean run=true;
-	String snapshotHash;
+	//String snapshotHash;
 	ArrayList<String> mainList = new ArrayList<String>();
 	ArrayList<String> ImageList = new ArrayList<String>();
 	ExtentTest landingPageTC,surveyFlowTC,surveyConfTC,surveyOffLinkOutTC,smallBannerOfferFlowTC,bigBannerTC,endTC;
@@ -37,8 +37,10 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 	@Test(priority=1)
 	@org.testng.annotations.Parameters(value={"os", "browser"})
 	public void testLandingPage(String os,String browser) throws Exception {
+		String mainWindow1= driver.getWindowHandle();
+		System.out.println("First Window Handles id - "+mainWindow1);
 		landingPageTC = extent.startTest("Landing Page.");
-		CrossBrowserTestingTestNG myTest = new CrossBrowserTestingTestNG();
+		//CrossBrowserTestingTestNG myTest = new CrossBrowserTestingTestNG();
 		Page ele=PageFactory.initElements(driver, Page.class);
 		try {
 			System.out.println("----Test Running On ---- >"+browser +" On Platform "+os);
@@ -133,13 +135,10 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				System.out.println("Pass.");
 				landingPageTC.log(LogStatus.PASS,
 						"Checked On 'I Agree' checkbox." + landingPageTC.addScreenCapture(captureScreenMethod(dest)));
-				snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
+
+
 			} catch (AssertionError ae) {
 				System.out.println("Fail :"+ae.getMessage());
-				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, ae.toString());
-				myTest.testScore = "fail";
 			}
 			System.out.println("TC : Check-Box can Unchecked.");
 			try {
@@ -150,13 +149,8 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				System.out.println("Pass.");
 				landingPageTC.log(LogStatus.PASS,
 						"Un-Checked On 'I Agree' checkbox." + landingPageTC.addScreenCapture(captureScreenMethod(dest)));
-				snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
 			} catch (AssertionError ae) {
 				System.out.println("Fail :"+ae.getMessage());
-				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, ae.toString());
-				myTest.testScore = "fail";
 			}
 
 
@@ -171,13 +165,10 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				System.out.println("Pass.");
 				landingPageTC.log(LogStatus.PASS,
 						"Checked on 'I am a Homeowner; check-box." + landingPageTC.addScreenCapture(captureScreenMethod(dest)));
-				snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
+
+
 			} catch (AssertionError ae) {
 				System.out.println("Fail :"+ae.getMessage());
-				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, ae.toString());
-				myTest.testScore = "fail";
 			}
 			System.out.println("TC : Check-Box can Unchecked.");
 
@@ -190,16 +181,13 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				landingPageTC.log(LogStatus.INFO, "Un-Check on 'I am Homeowner' checkbox.");
 				landingPageTC.log(LogStatus.PASS,
 						"Un-Checked On 'I am A Homeowner' checkbox." + landingPageTC.addScreenCapture(captureScreenMethod(dest)));
-				snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
+
+
 			} catch (AssertionError ae) {
 				System.out.println("Fail :"+ae.getMessage());
-				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, ae.toString());
-				myTest.testScore = "fail";
 			}
-			snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-			myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
+
+
 			ele.continueBtn.click();
 			driver.getCurrentUrl();
 			landingPageTC.log(LogStatus.INFO, "Done.");
@@ -209,7 +197,6 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			System.out.println("Survey Flow.");
 			surveyFlowTC = extent.startTest("Survey Flow.");
-
 			new WebDriverWait(driver, 15).ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(ele.yesButton));
 			System.out.println("Test Case - Provide response to page with question.");
 			surveyFlowTC.log(LogStatus.INFO, "Test Case - Provide response to page with question.");
@@ -219,14 +206,14 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				if(ele.yesBtn.isDisplayed() 
 						&& !ele.lablequest.getText().contains("FIRST NAME *"))
 				{
-					snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-					myTest.setDescription(driver.getSessionId().toString(), snapshotHash, ele.lablequest.getText());
+
+
 					System.out.println(ele.lablequest.getText());
 					System.out.println("Click on "+ele.yesBtn.getText()+" button.");
 					surveyFlowTC.log(LogStatus.PASS,
 							"" + surveyFlowTC.addScreenCapture(captureScreenMethod(dest)));
-					snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-					myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
+
+
 					ele.yesBtn.click();
 
 					continue;
@@ -237,6 +224,7 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				}
 
 			}
+
 			surveyFlowTC.log(LogStatus.INFO, "Done.");
 			extent.endTest(surveyFlowTC);
 			System.out.println("******************************************************************************************");
@@ -258,14 +246,11 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				surveyConfTC.log(LogStatus.PASS,
 						"Check all field must be auto filled with correct data."
 								+ surveyConfTC.addScreenCapture(captureScreenMethod(dest)));
-				snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
+
+
 			} catch (AssertionError e) {
 				System.out.println("Fail");
-				e.printStackTrace();
-				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, e.toString());
-				myTest.testScore = "fail";
+
 			}
 
 			System.out.println("Test Case- Vary between check and Un-check the 'I CONFIRM' acceptance checkbox.");
@@ -279,14 +264,11 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				surveyConfTC.log(LogStatus.PASS,
 						"Unchecked ' I Confirm' check-box."
 								+ surveyConfTC.addScreenCapture(captureScreenMethod(dest)));
-				snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
+
+
 			} catch (AssertionError e) {
-				e.printStackTrace();
+
 				System.out.println("Fail.");
-				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, e.toString());
-				myTest.testScore = "fail";
 			}
 
 			System.out.println("'I Confirm check box is checked.");
@@ -298,15 +280,11 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 				surveyConfTC.log(LogStatus.PASS,
 						"Checked ' I Confirm' check-box."
 								+ surveyConfTC.addScreenCapture(captureScreenMethod(dest)));
-				snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
-			} catch (AssertionError e) {
-				e.printStackTrace();
-				System.out.println("Fail.");
-				String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, e.toString());
-				myTest.testScore = "fail";
 
+
+			} catch (AssertionError e) {
+
+				System.out.println("Fail.");
 			}
 			System.out.println("Verify Marketing Link is Working.");
 			surveyConfTC.log(LogStatus.INFO, "Test Case- Verify Marketing Link is Working.");			
@@ -316,8 +294,6 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			surveyConfTC.log(LogStatus.PASS,
 					"Marketing Link is working."
 							+ surveyConfTC.addScreenCapture(captureScreenMethod(dest)));
-			snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-			myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
 			ele.closeWindow.click();
 			System.out.println("Marketing Link is working.");
 			Thread.sleep(2000);
@@ -326,115 +302,89 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 			System.out.println("Survey Confirmation Page completed");
 			surveyConfTC.log(LogStatus.INFO, "Done.");			
 			extent.endTest(surveyConfTC);
-			System.out.println("***********************************************************************");
+			System.out.println("**************************************************************************************************************");
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
 
 
 			System.out.println("Survey Offer Linkout Pages.");
 			surveyOffLinkOutTC=extent.startTest("Survey Offer Linkout Pages.");
 			try {
+				wc.until(ExpectedConditions.visibilityOfElementLocated(By.id("i-3bee30e7-91ed-4eb2-902d-765f0a373ad9")));
+				System.out.println("Yes I Do Button is visible.");
 				surveyOffLinkOutTC.log(LogStatus.PASS, "On Click on button - "+surveyOffLinkOutTC.addScreenCapture(captureScreenMethod("dest")));
-				String parentHandle = driver.getWindowHandle(); 
-				ele.btn.click();
+				ele.yesIDoBtn.click();
 				for (String winHandle : driver.getWindowHandles()) {
 					driver.switchTo().window(winHandle); 
 				}
 				System.out.println("On click URL : "+driver.getCurrentUrl());
 				surveyOffLinkOutTC.log(LogStatus.PASS, "Open Url"+driver.getCurrentUrl()+""+surveyOffLinkOutTC.addScreenCapture(captureScreenMethod("dest")));
-				snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
 				driver.close();
-				driver.switchTo().window(parentHandle);
-
+				Thread.sleep(2000);
+				driver.switchTo().window(mainWindow1);
 			} catch (Exception e) {
-				System.out.println("Survey Page with 'Yes' and 'No' button is not displayed.");
+				System.out.println("'Yes' I do button is not visible.");
 			}
 
-			Thread.sleep(5000);
-			//String parentHandle = driver.getWindowHandle(); 
-			WebDriverWait wc1= new WebDriverWait(driver, 10);
 			try {
-				wc1.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='i-3bee30e7-91ed-4eb2-902d-765f0a373ad9']")));
-				surveyOffLinkOutTC.log(LogStatus.PASS, "On Click on button - "+surveyOffLinkOutTC.addScreenCapture(captureScreenMethod("dest")));
-				System.out.println("Yes I do button found.");
-				driver.findElement(By.xpath("//*[@id='i-3bee30e7-91ed-4eb2-902d-765f0a373ad9']")).click();
-				ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
-				driver.switchTo().window(tabs2.get(1));
-				System.out.println("New Open Tab "+driver.getCurrentUrl());
-				surveyOffLinkOutTC.log(LogStatus.PASS, "Open Url - "+driver.getCurrentUrl()+""+surveyOffLinkOutTC.addScreenCapture(captureScreenMethod("dest")));
-				snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
-				driver.close();
-				driver.switchTo().window(tabs2.get(0));
-
-			} catch (Exception e) {
-				System.out.println("Yes I do button not found.");
-			}
-
-
-			try {
-				wc1.until(ExpectedConditions.elementToBeClickable(ele.imgbtn));
+				wc.until(ExpectedConditions.visibilityOf(ele.imgbtn));
+				System.out.println("Uber Start Now Button is visibled and click.");
 				surveyOffLinkOutTC.log(LogStatus.PASS, "On Click on button - "+surveyOffLinkOutTC.addScreenCapture(captureScreenMethod("dest")));
 				System.out.println("Small Image Banner is found.");
 				ele.imgbtn.click();
-				ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
-				driver.switchTo().window(tabs2.get(1));
+				for (String winHandle : driver.getWindowHandles()) {
+					driver.switchTo().window(winHandle); 
+				}
 				System.out.println("New Open Tab "+driver.getCurrentUrl());
 				surveyOffLinkOutTC.log(LogStatus.PASS, "Open Url  "+driver.getCurrentUrl()+""+surveyOffLinkOutTC.addScreenCapture(captureScreenMethod("dest")));
 				driver.close();
-				snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-				myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");driver.close();
-				driver.switchTo().window(tabs2.get(0));
-
+				Thread.sleep(2000);
+				driver.switchTo().window(mainWindow1);
 			} catch (Exception e) {
-				System.out.println("Small Image Banner  button not found.");
-				e.printStackTrace();
-			}
-			while(true){
-				try {
-					driver.switchTo().frame(0);
-					break;
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-					continue;
-				}
+				System.out.println("Uber Banner Image.");
+
 			}
 
+			System.out.println("Now will move to iframe .");
+			try {
+				driver.switchTo().frame(driver.findElement(By.name("sandbox--518d3b8f-6787-458a-bcaf-8bce288d761c-1")));
+				System.out.println("Iframe Founded and switched.");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			while(true){
 				try {
-					wc1.until(ExpectedConditions.elementToBeClickable(ele.imgbtn1));
+					wc.until(ExpectedConditions.visibilityOf(ele.imgbtn1));
+					System.out.println("List Radio and button iframe is showned.");
 					surveyOffLinkOutTC.log(LogStatus.PASS, "On Click 'Continue' Button "+surveyOffLinkOutTC.addScreenCapture(captureScreenMethod("dest")));
 					ele.imgbtn1.click();
 					surveyOffLinkOutTC.log(LogStatus.PASS, "Next Page :"+surveyOffLinkOutTC.addScreenCapture(captureScreenMethod("dest")));
-
-					continue;
 				} catch (Exception e) {
+					System.out.println("List Radio and Button option selection , ended.");
 					break;
 				}
 
 
 			}
-			//
-			//			while(true){
-			//				try {
-			//					wc1.until(ExpectedConditions.elementToBeClickable(ele.imgbtn1));
-			//					ele.imgbtn1.click();
-			//					surveyOffLinkOutTC.log(LogStatus.PASS, "Open Url"+surveyOffLinkOutTC.addScreenCapture(captureScreenMethod("dest")));
-			//					snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-			//					myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
-			//					continue;
-			//				} catch (Exception e) {
-			//					break;
-			//				}
-			//			}
+			surveyOffLinkOutTC.log(LogStatus.INFO, "Done.");
 			extent.endTest(surveyOffLinkOutTC);
+			System.out.println("******************************************************************************************************");
+
 			///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-			System.out.println("Small Banner Offer Flow.");
+			System.out.println("Small Banner Offer Flow - Radio Option Linkout.");
 			smallBannerOfferFlowTC=extent.startTest("Small Banner Offer Flow.");
 			while(true){
+
 				try {
 					List <WebElement> radioLink=driver.findElements(By.xpath("//div[@class='iff-campaign-container-regular']/div[2]/label[1]/input"));
 					for(WebElement id:radioLink)
@@ -443,11 +393,8 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 						if(!mainList.contains(ids))
 							mainList.add(ids);
 					}
-					System.out.println("Size of array list now "+mainList.size());
-					String mainWindow= driver.getWindowHandle();
 					smallBannerOfferFlowTC.log(LogStatus.PASS, "On click 'Yes' radio option -"+smallBannerOfferFlowTC.addScreenCapture(captureScreenMethod("dest")));
-					snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-					myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
+					Thread.sleep(2000);
 					if(mainList.size()==1)
 					{
 						driver.findElement(By.xpath("//*[@id='"+mainList.get(0)+"']")).click();
@@ -465,29 +412,34 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 					else if(mainList.size()==4)
 					{
 						driver.findElement(By.xpath("//*[@id='"+mainList.get(3)+"']")).click();
-
 					}
-
 
 					for (String winHandle : driver.getWindowHandles()) {
 						driver.switchTo().window(winHandle); 
 					}
-
 					System.out.println("Open Url :"+driver.getCurrentUrl());
 					smallBannerOfferFlowTC.log(LogStatus.PASS, "Open Url"+driver.getCurrentUrl()+""+smallBannerOfferFlowTC.addScreenCapture(captureScreenMethod("dest")));
-					snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-					myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
 					driver.close();
-					driver.switchTo().window(mainWindow);
-					driver.switchTo().frame(0);
+					driver.switchTo().window(mainWindow1);
+					wc.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("sandbox--518d3b8f-6787-458a-bcaf-8bce288d761c-1"));
+					Thread.sleep(2000);
 				} catch (Exception e) {
+					System.out.println("-------------------------Small Banner Radio Offer Flow Linkout Page completed.---------------------");
 					break;
 				}
 			}
 
+			smallBannerOfferFlowTC.log(LogStatus.INFO, "Done.");
 			extent.endTest(smallBannerOfferFlowTC);
-			////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+
+
+
+			System.out.println("Large Banner offer Flow.");
 			bigBannerTC=extent.startTest("Large Banner Offer Flow.");
 			while(true){
 				try {
@@ -498,13 +450,8 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 						if(!ImageList.contains(ids))
 							ImageList.add(ids);
 					}
-					System.out.println("Size of array list now "+ImageList.size());
-					String mainWindow1= driver.getWindowHandle();
 					bigBannerTC.log(LogStatus.PASS, "Open Url"+bigBannerTC.addScreenCapture(captureScreenMethod("dest")));
-					snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-					myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
 					bigBannerTC.log(LogStatus.PASS, "On click on Large Banner Image :"+bigBannerTC.addScreenCapture(captureScreenMethod("dest")));
-
 					if(ImageList.size()==1)
 					{
 						driver.findElement(By.xpath("//*[@id='"+ImageList.get(0)+"']/a")).click();
@@ -524,6 +471,11 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 						driver.findElement(By.xpath("//*[@id='"+ImageList.get(3)+"']/a")).click();
 
 					}
+					else if(ImageList.size()==5)
+					{
+						driver.findElement(By.xpath("//*[@id='"+ImageList.get(4)+"']/a")).click();
+
+					}
 					for (String winHandle : driver.getWindowHandles()) {
 						driver.switchTo().window(winHandle); 
 					}
@@ -532,56 +484,44 @@ public class LandingPage extends CrossBrowserTestingTestNG{
 					bigBannerTC.log(LogStatus.PASS, "Open Url"+driver.getCurrentUrl()+""+bigBannerTC.addScreenCapture(captureScreenMethod("dest")));
 					driver.close();
 					driver.switchTo().window(mainWindow1);
-					driver.switchTo().frame(0);
+					wc.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("sandbox--518d3b8f-6787-458a-bcaf-8bce288d761c-1"));
+					Thread.sleep(2000);
 				} catch (Exception e) {
-					//e.printStackTrace();
+					driver.switchTo().defaultContent();
+					System.out.println("------------Large Banner on click linkout completed.-----------------------------");
 					break;
 				}
 			}
+			
+			
 			bigBannerTC.log(LogStatus.INFO, "Done.");
 			extent.endTest(bigBannerTC);
-			///////////////////////////////////////////////////////////////////////////////////////////////////////////////////		    
 
-
-
-			endTC=extent.startTest("End");
-			System.out.println("Now Switic.......");
-			//driver.switchTo().window(parentHandle);
-			wc.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']"))));
-			endTC.log(LogStatus.PASS, "On click on button :"+endTC.addScreenCapture(captureScreenMethod("dest")));
-			snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-			myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
-			driver.findElement(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']")).click();
-			for (String winHandle : driver.getWindowHandles()) {
-				driver.switchTo().window(winHandle); 
+			try {
+				System.out.println("Ending Now.");
+				endTC=extent.startTest("End");
+				wc.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']")));
+				endTC.log(LogStatus.PASS, "On click on button :"+endTC.addScreenCapture(captureScreenMethod("dest")));
+				driver.findElement(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']")).click();
+				for (String winHandle : driver.getWindowHandles()) {
+					driver.switchTo().window(winHandle); 
+				}
+				System.out.println(driver.getCurrentUrl());
+				endTC.log(LogStatus.PASS, "Open Url -"+driver.getCurrentUrl()+""+endTC.addScreenCapture(captureScreenMethod("dest")));
+				driver.close();
+				endTC.log(LogStatus.INFO, "Test Suite Finished.");
+				extent.endTest(endTC);
+			} catch (Exception e) {
+				System.out.println("Exception Related to End -----------------------------------------");
+				e.printStackTrace();
 			}
-			System.out.println(driver.getCurrentUrl());
-			endTC.log(LogStatus.PASS, "Open Url -"+driver.getCurrentUrl()+""+endTC.addScreenCapture(captureScreenMethod("dest")));
-			snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-			myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
-			driver.close();
-			for (String winHandle : driver.getWindowHandles()) {
-				driver.switchTo().window(winHandle); 
-			}
-			System.out.println(driver.getCurrentUrl());
-			endTC.log(LogStatus.PASS, "Open Url -"+driver.getCurrentUrl()+""+endTC.addScreenCapture(captureScreenMethod("dest")));
-			snapshotHash=myTest.takeSnapshot(driver.getSessionId().toString());
-			myTest.setDescription(driver.getSessionId().toString(), snapshotHash, "ScreenShots Taken");
-			driver.close();
-			endTC.log(LogStatus.INFO, "Test Suite Finished.");
-			endTC.log(LogStatus.PASS, "Open Url -"+driver.getCurrentUrl()+""+endTC.addScreenCapture(captureScreenMethod("dest")));
-			extent.endTest(endTC);
-			myTest.setScore(driver.getSessionId().toString(), myTest.testScore);
+				
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			myTest.testScore="fail";
-			myTest.setScore(driver.getSessionId().toString(), myTest.testScore);
-			String snapshotHash = myTest.takeSnapshot(driver.getSessionId().toString());
-			myTest.setDescription(driver.getSessionId().toString(), snapshotHash, e.toString());
+
 			System.out.println("Excpetion Occured. Re-Run Test Suite Again.");
 			extent.flush();
-			driver.close();
+			//driver.close();
 		}
 
 	}
