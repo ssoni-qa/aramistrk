@@ -1,22 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="3" name="Suite" parallel="tests">
-
-	<test name="Window 10 Chrome">
-		<parameter name="os" value="Win10-E14" />
-		<parameter name="browser" value="Chrome58x64" />
-		<classes>
-			<class name="testSuite.LandingPage" />
-		</classes>
+<suite name="Parallel" thread-count="1" parallel="tests">
+	
+	
+	<test name="SingleTestSafari">
+		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
+		<parameter name="environment" value="win10chrome" />
+		<packages>
+			<package name="testSuite"></package>
+		</packages>
 	</test>
-	<!-- <test name="Window 10 Edge"> <parameter name="os" value="Win10-E15" 
-		/> <parameter name="browser" value="Edge15" /> <classes> <class name="testSuite.LandingPage" 
-		/> </classes> </test> <test name="Window 7 - IE"> <parameter name="os" value="Win7x64-C2" 
-		/> <parameter name="browser" value="IE10" /> <classes> <class name="testSuite.LandingPage" 
-		/> </classes> </test> -->
-	<!-- <test name="Android Chrome"> <parameter name="os" value="Nexus6P-And60" 
-		/> <parameter name="browser" value="MblChrome57" /> <classes> <class name="testSuite.LandingPage" 
-		/> </classes> </test> Test <test name="IPhone - Safari"> <parameter name="os" 
-		value="iPhone7Plus-iOS10sim" /> <parameter name="browser" value="MblSafari10.0" 
-		/> <classes> <class name="testSuite.LandingPage" /> </classes> </test> --><!-- Test -->
-</suite> <!-- Suite -->
+
+	<test name="SingleTestIE">
+		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
+		<parameter name="environment" value="wind10edge" />
+		<packages>
+			<package name="testSuite"></package>
+		</packages>
+	</test>
+	<test name="SingleTestiOS">
+		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
+		<parameter name="environment" value="win7ie" />
+		<packages>
+			<package name="testSuite"></package>
+		</packages>
+	</test>
+	
+	
+	
+	
+	<test name="SingleTestChrome">
+		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
+		<parameter name="environment" value="android" />
+		<packages>
+			<package name="testSuite"></package>
+		</packages>
+	</test>
+
+	<test name="SingleTestFirefox">
+		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
+		<parameter name="environment" value="ios" />
+		<packages>
+			<package name="testSuite"></package>
+		</packages>
+	</test>
+
+
+</suite>
+
+
+
+
+
+
+
+<!-- <?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"> 
+	<suite thread-count="1" name="Test Suite"> <test name="Windows 7 - Internet 
+	Explorer"> <parameter name="os" value="Win7-C2" /> <parameter name="browser" 
+	value="IE9" /> <parameter name="testEnv" value="Windows 7 - Internet Explorer" 
+	/> <classes> <class name="testSuite.LandingPage" /> </classes> </test> </suite> -->

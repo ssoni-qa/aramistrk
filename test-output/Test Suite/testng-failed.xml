@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Test Suite]">
+  <test name="Windows 7 - Internet Explorer(failed)">
+    <parameter name="os" value="Win7-C2"/>
+    <parameter name="browser" value="IE9"/>
+    <parameter name="testEnv" value="Windows 7 - Internet Explorer"/>
+    <classes>
+      <class name="testSuite.LandingPage">
+        <methods>
+          <include name="done"/>
+          <include name="finish"/>
+          <include name="setUp"/>
+          <include name="testLandingPage" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- testSuite.LandingPage -->
+    </classes>
+  </test> <!-- Windows 7 - Internet Explorer(failed) -->
+</suite> <!-- Failed suite [Test Suite] -->

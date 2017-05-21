@@ -54,7 +54,7 @@ public class Page {
 	
 	//Survey Flow Page
 	
-	@FindBy(css="span.label__text")
+	@FindBy(xpath="//div[@class='radioButtons']/label[1]")
 	public WebElement yesBtn;
 	
 	@FindBy(css="label.form-label")
