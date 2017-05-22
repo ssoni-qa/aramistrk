@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Parallel" thread-count="1" parallel="tests">
 	
-	
+	<!-- 
 	<test name="SingleTestSafari">
 		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
 		<parameter name="environment" value="win10chrome" />
@@ -25,7 +25,7 @@
 			<package name="testSuite"></package>
 		</packages>
 	</test>
-	
+	 -->
 	
 	
 	
@@ -37,13 +37,13 @@
 		</packages>
 	</test>
 
-	<test name="SingleTestFirefox">
+	<!-- <test name="SingleTestFirefox">
 		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
 		<parameter name="environment" value="ios" />
 		<packages>
 			<package name="testSuite"></package>
 		</packages>
-	</test>
+	</test> -->
 
 
 </suite>

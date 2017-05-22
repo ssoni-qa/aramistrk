@@ -5,7 +5,6 @@
     <classes>
       <class name="testSuite.LandingPage">
         <methods>
-          <include name="setUp"/>
           <include name="testLandingPage"/>
         </methods>
       </class> <!-- testSuite.LandingPage -->

@@ -60,8 +60,6 @@ public class Page {
 	@FindBy(css="label.form-label")
 	public WebElement lablequest;
 	
-	@FindBy(xpath="//span[contains(text(),'Yes')]")
-	public WebElement yesButton;
 	
 	//Confirm you Information 
 	
