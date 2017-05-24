@@ -1,67 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
-  <test name="Window 10 Chrome(failed)">
-    <parameter name="os" value="Win10-E14"/>
-    <parameter name="browser" value="Chrome58"/>
-    <parameter name="testEnv" value="Window 10 Chrome"/>
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]" parallel="tests">
+  <test name="FirstTest(failed)" parallel="tests">
+    <parameter name="os" value="Nexus9-And60"/>
+    <parameter name="browser" value="MblChrome55"/>
     <classes>
       <class name="testSuite.LandingPage">
         <methods>
           <include name="done"/>
-          <include name="done"/>
-          <include name="done"/>
-          <include name="finish"/>
-          <include name="finish"/>
-          <include name="finish"/>
           <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="testLandingPage" invocation-numbers="0"/>
+          <include name="testLandingPage"/>
         </methods>
       </class> <!-- testSuite.LandingPage -->
     </classes>
-  </test> <!-- Window 10 Chrome(failed) -->
-  <test name="Windows 10 - Edge(failed)">
-    <parameter name="os" value="Win10-E15"/>
-    <parameter name="browser" value="Edge15"/>
-    <parameter name="testEnv" value="Windows 10 - Edge"/>
-    <classes>
-      <class name="testSuite.LandingPage">
-        <methods>
-          <include name="done"/>
-          <include name="done"/>
-          <include name="done"/>
-          <include name="finish"/>
-          <include name="finish"/>
-          <include name="finish"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="testLandingPage" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- testSuite.LandingPage -->
-    </classes>
-  </test> <!-- Windows 10 - Edge(failed) -->
-  <test name="Windows 7 - Internet Explorer(failed)">
-    <parameter name="os" value="Win7-C2"/>
-    <parameter name="browser" value="IE9"/>
-    <parameter name="testEnv" value="Windows 7 - Internet Explorer"/>
-    <classes>
-      <class name="testSuite.LandingPage">
-        <methods>
-          <include name="done"/>
-          <include name="done"/>
-          <include name="done"/>
-          <include name="finish"/>
-          <include name="finish"/>
-          <include name="finish"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="testLandingPage" invocation-numbers="0"/>
-        </methods>
-      </class> <!-- testSuite.LandingPage -->
-    </classes>
-  </test> <!-- Windows 7 - Internet Explorer(failed) -->
+  </test> <!-- FirstTest(failed) -->
 </suite> <!-- Failed suite [Suite] -->

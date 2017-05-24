@@ -33,17 +33,14 @@ public class LandingPage extends BrowserStackTestNGTest{
 
 
 	@Test
-	@org.testng.annotations.Parameters(value={"config", "environment"})
-	public void testLandingPage(String config_file, String environment) throws WebDriverException, IOException, InterruptedException {
+	public void testLandingPage() throws WebDriverException, IOException, InterruptedException {
 
 		String mainWindow1= driver.getWindowHandle();
 		System.out.println("First Window Handles id - "+mainWindow1);
 		landingPageTC = extent.startTest("Test Suite");
 		//CrossBrowserTestingTestNG myTest = new CrossBrowserTestingTestNG();
 		Page ele=PageFactory.initElements(driver, Page.class);
-
 		//Open Url
-		System.out.println("Running on - "+environment);
 		driver.get("http://go.aramistrk.com/aff_c?offer_id=311&aff_id=1018");
 		landingPageTC.log(LogStatus.INFO, "Test Case - Check for valid Landing Page."+baseUrl);
 		landingPageTC.log(LogStatus.INFO, "Open URL-"+baseUrl);
@@ -215,13 +212,13 @@ public class LandingPage extends BrowserStackTestNGTest{
 				}
 				else
 				{
+					landingPageTC.log(LogStatus.INFO, "Done.");
+					System.out.println("Done.");
 					break;
 				}
 
 			}
 
-			landingPageTC.log(LogStatus.INFO, "Done.");
-			System.out.println("Done.");
 		} catch (Exception e2) {
 			// TODO Auto-generated catch block
 
@@ -230,7 +227,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		try {
-			wc.until(ExpectedConditions.elementToBeClickable(ele.conMonth));
+			wc.until(ExpectedConditions.elementToBeClickable(ele.conContinueBtn));
 			System.out.println("Survey Confirmation Page.");
 			Select dom=new Select(ele.conMonth);
 			Select dod=new Select(ele.conDay);
@@ -299,7 +296,6 @@ public class LandingPage extends BrowserStackTestNGTest{
 			ele.conContinueBtn.click();
 			landingPageTC.log(LogStatus.INFO, "Done.");			
 			System.out.println("Survey Confirmation Page completed");
-			System.out.println("**************************************************************************************************************");
 		} catch (Exception e2) {
 			// TODO Auto-generated catch block
 
@@ -308,50 +304,38 @@ public class LandingPage extends BrowserStackTestNGTest{
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 		try {
-			wc.until(ExpectedConditions.elementToBeClickable(By.id("i-3bee30e7-91ed-4eb2-902d-765f0a373ad9")));
-			System.out.println("Survey Offer Button Linkout Pages.");
-			landingPageTC.log(LogStatus.INFO, "On Click on 'CONTINUE' button."+ landingPageTC.addScreenCapture(captureScreenMethod(dest)));
-			WebElement yes_i_do_btn=driver.findElement(By.id("i-3bee30e7-91ed-4eb2-902d-765f0a373ad9"));
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", yes_i_do_btn);
-			yes_i_do_btn.click();
-			ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
-			driver.switchTo().window(tabs1.get(1));
-			Thread.sleep(5000);
-			System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
-			landingPageTC.log(LogStatus.PASS, "Open URL on click on button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
-			driver.close();
-			Thread.sleep(2000);
-			driver.switchTo().window(tabs1.get(0));
-			System.out.println("Done for 'Yes I Do' button.");
+
+			while(true){
+			wc.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='blockFormButtonList']/button")));
+			List<WebElement> linkbtn=driver.findElements(By.xpath("//div[@class='blockFormButtonList']/button"));
+			if(linkbtn.get(0).isDisplayed())
+			{				
+				System.out.println("Survey Offer Button Linkout Pages.");
+				Thread.sleep(3000);
+				linkbtn.get(0).click();
+				System.out.println("Clicked.");
+				ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
+				driver.switchTo().window(tabs1.get(1));
+				Thread.sleep(5000);
+				System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
+				landingPageTC.log(LogStatus.PASS, "Open URL on click on button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
+				driver.close();
+				Thread.sleep(2000);
+				driver.switchTo().window(tabs1.get(0));
+				continue;
+			}
+			else
+			{
+				break;
+			}
+		}
+
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-
+            e1.printStackTrace();
 		}
 		System.out.println("**************************************************************************************************************");
 
-
-		try {
-			wc.until(ExpectedConditions.elementToBeClickable(By.id("i-c40d54a9-6e8b-46da-8ba6-6086786bfd41")));
-			System.out.println("Survey Offer Button Linkout Pages with Small Banner.");
-			landingPageTC.log(LogStatus.INFO, "Next Page "+ landingPageTC.addScreenCapture(captureScreenMethod(dest)));
-			WebElement yesbtn=driver.findElement(By.id("i-c40d54a9-6e8b-46da-8ba6-6086786bfd41"));
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", yesbtn);
-			yesbtn.click();
-			ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
-			driver.switchTo().window(tabs2.get(1));
-			Thread.sleep(3000);
-			System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
-			landingPageTC.log(LogStatus.PASS, "Open URL on click 'Yes' button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
-			driver.close();
-			Thread.sleep(2000);
-			driver.switchTo().window(tabs2.get(0));
-			System.out.println("Done");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-		}
-		System.out.println("**************************************************************************************************************");
 
 
 		try {
@@ -399,7 +383,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 			landingPageTC.log(LogStatus.INFO, "Done.");
 
 		}
-        System.out.println("Done.");
+		System.out.println("Done.");
 		System.out.println("**************************************************************************************************************");
 
 
@@ -455,19 +439,14 @@ public class LandingPage extends BrowserStackTestNGTest{
 				System.out.println(headerTxt);
 				if(headerTxt.equals("You Qualify for These Special Offers:"))
 				{
-					String ImageLinkWidow=driver.getWindowHandle();
 					driver.findElement(By.xpath("//div[@class='iff-campaign-container' and not(@style)]/a")).click();
-					// Switch to new window opened
-					for(String winHandle : driver.getWindowHandles()){
-						driver.switchTo().window(winHandle);
-					}
-					// Perform the actions on new window
-					Thread.sleep(5000);	
+					ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
+					driver.switchTo().window(tabs1.get(1));
+					System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
 					landingPageTC.log(LogStatus.PASS, "On click on 'Continue' button -"+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
-					// Close the new window, if that window no more required
 					driver.close();
-					// Switch back to original browser (first window)
-					driver.switchTo().window(ImageLinkWidow);
+					Thread.sleep(2000);
+					driver.switchTo().window(tabs1.get(0));
 					driver.switchTo().defaultContent();
 					wc.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(driver.findElement(By.cssSelector("iframe[id='sandbox--518d3b8f-6787-458a-bcaf-8bce288d761c']"))));
 					landingPageTC.log(LogStatus.PASS, "Next Page"+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
@@ -505,21 +484,17 @@ public class LandingPage extends BrowserStackTestNGTest{
 			wc.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']")));
 			System.out.println("Survey End Page button Linkout.");
 			landingPageTC.log(LogStatus.INFO, "Next Page "+ landingPageTC.addScreenCapture(captureScreenMethod(dest)));
-			String mainwin=driver.getWindowHandle();
+			//String mainwin=driver.getWindowHandle();
 			Thread.sleep(3000);
 			WebElement endbtn=driver.findElement(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']"));
 			endbtn.click();
-			// Switch to new window opened
-			for(String winHandle : driver.getWindowHandles()){
-				driver.switchTo().window(winHandle);
-			}
-			// Perform the actions on new window
-			Thread.sleep(5000);
-			landingPageTC.log(LogStatus.PASS, "Open URL on click on button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
-			// Close the new window, if that window no more required
+			ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
+			driver.switchTo().window(tabs1.get(1));
+			System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
+			landingPageTC.log(LogStatus.PASS, "On click on 'Continue' button -"+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
 			driver.close();
-			// Switch back to original browser (first window)
-			driver.switchTo().window(mainwin);
+			Thread.sleep(2000);
+			driver.switchTo().window(tabs1.get(0));
 			landingPageTC.log(LogStatus.PASS, "Open URL on click on button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
 			landingPageTC.log(LogStatus.INFO, "Completed Successfully");
 			extent.endTest(landingPageTC);

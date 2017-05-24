@@ -102,7 +102,7 @@
                     <div class="method-list-content passed suite-Parallel">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Parallel" title="testSuite.LandingPage" hash-for-method="testLandingPage(bs.cbt.testSuite.conf.json, android)">testLandingPage(bs.cbt.testSuite.conf.json, android)</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Parallel" title="testSuite.LandingPage" hash-for-method="testLandingPage">testLandingPage</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Parallel -->
@@ -125,10 +125,9 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="testLandingPage(bs.cbt.testSuite.conf.json, android)">
-                  </a> <!-- testLandingPage(bs.cbt.testSuite.conf.json, android) -->
+                  <a name="testLandingPage">
+                  </a> <!-- testLandingPage -->
                   <span class="method-name">testLandingPage</span>
-                  <span class="parameters">(bs.cbt.testSuite.conf.json, android)</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -142,9 +141,9 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite thread-count=&quot;1&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Parallel&quot; parallel=&quot;tests&quot;&gt;
+&lt;suite thread-count=&quot;1&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Parallel&quot;&gt;
   &lt;test name=&quot;SingleTestChrome&quot;&gt;
-    &lt;parameter name=&quot;environment&quot; value=&quot;android&quot;/&gt;
+    &lt;parameter name=&quot;environment&quot; value=&quot;ios&quot;/&gt;
     &lt;parameter name=&quot;config&quot; value=&quot;bs.cbt.testSuite.conf.json&quot;/&gt;
     &lt;packages&gt;
       &lt;package name=&quot;testSuite&quot;/&gt;
@@ -194,12 +193,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testLandingPage')
 data.setCell(0, 2, 'testSuite.LandingPage')
-data.setCell(0, 3, 1037486);
+data.setCell(0, 3, 224172);
 window.suiteTableData['Parallel']= { tableData: data, tableDiv: 'times-div-Parallel'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 17 minutes</span>
+              <span class="suite-total-time">Total running time: 3 minutes</span>
               <div id="times-div-Parallel">
               </div> <!-- times-div-Parallel -->
             </div> <!-- times-div -->
@@ -227,18 +226,16 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">testSuite.LandingPage</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
-                <span class="method-name">setUp(bs.cbt.testSuite.conf.json, android)</span>
+                <span class="method-name">setUp(bs.cbt.testSuite.conf.json, ios)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">testLandingPage(bs.cbt.testSuite.conf.json, android)</span>
-                <span class="method-start">52683 ms</span>
+                <span class="method-name">testLandingPage</span>
+                <span class="method-start">43375 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">tearDown</span>
-                <span class="method-start">1090172 ms</span>
+                <span class="method-start">267549 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

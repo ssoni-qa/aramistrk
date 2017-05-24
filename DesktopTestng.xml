@@ -1,49 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Parallel" thread-count="1" parallel="tests">
-	
-	<!-- 
-	<test name="SingleTestSafari">
-		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
-		<parameter name="environment" value="win10chrome" />
-		<packages>
-			<package name="testSuite"></package>
-		</packages>
-	</test>
+<suite name="Parallel" thread-count="1">
 
-	<test name="SingleTestIE">
-		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
-		<parameter name="environment" value="wind10edge" />
-		<packages>
-			<package name="testSuite"></package>
-		</packages>
-	</test>
-	<test name="SingleTestiOS">
-		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
-		<parameter name="environment" value="win7ie" />
-		<packages>
-			<package name="testSuite"></package>
-		</packages>
-	</test>
-	 -->
-	
-	
-	
+	<!-- <test name="SingleTestSafari"> <parameter name="config" value="bs.cbt.testSuite.conf.json" 
+		/> <parameter name="environment" value="win10chrome" /> <packages> <package 
+		name="testSuite"></package> </packages> </test> <test name="SingleTestIE"> 
+		<parameter name="config" value="bs.cbt.testSuite.conf.json" /> <parameter 
+		name="environment" value="wind10edge" /> <packages> <package name="testSuite"></package> 
+		</packages> </test> <test name="SingleTestiOS"> <parameter name="config" 
+		value="bs.cbt.testSuite.conf.json" /> <parameter name="environment" value="win7ie" 
+		/> <packages> <package name="testSuite"></package> </packages> </test> -->
+
+
+
 	<test name="SingleTestChrome">
-		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
-		<parameter name="environment" value="android" />
-		<packages>
-			<package name="testSuite"></package>
-		</packages>
-	</test>
-
-	<!-- <test name="SingleTestFirefox">
 		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
 		<parameter name="environment" value="ios" />
 		<packages>
 			<package name="testSuite"></package>
 		</packages>
-	</test> -->
+	</test>
+
+	<!-- <test name="SingleTestFirefox"> <parameter name="config" value="bs.cbt.testSuite.conf.json" 
+		/> <parameter name="environment" value="ios" /> <packages> <package name="testSuite"></package> 
+		</packages> </test> -->
 
 
 </suite>

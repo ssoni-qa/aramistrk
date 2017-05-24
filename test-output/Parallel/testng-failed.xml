@@ -2,108 +2,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Parallel]" parallel="tests">
   <test name="SingleTestChrome(failed)" parallel="tests">
-    <parameter name="environment" value="android"/>
+    <parameter name="environment" value="iPhone"/>
     <parameter name="config" value="bs.cbt.testSuite.conf.json"/>
     <classes>
       <class name="testSuite.LandingPage">
         <methods>
           <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
           <include name="testLandingPage"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- testSuite.LandingPage -->
     </classes>
   </test> <!-- SingleTestChrome(failed) -->
-  <test name="SingleTestFirefox(failed)" parallel="tests">
-    <parameter name="environment" value="ios"/>
-    <parameter name="config" value="bs.cbt.testSuite.conf.json"/>
-    <classes>
-      <class name="testSuite.LandingPage">
-        <methods>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="testLandingPage"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- testSuite.LandingPage -->
-    </classes>
-  </test> <!-- SingleTestFirefox(failed) -->
-  <test name="SingleTestSafari(failed)" parallel="tests">
-    <parameter name="environment" value="win10chrome"/>
-    <parameter name="config" value="bs.cbt.testSuite.conf.json"/>
-    <classes>
-      <class name="testSuite.LandingPage">
-        <methods>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="testLandingPage"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- testSuite.LandingPage -->
-    </classes>
-  </test> <!-- SingleTestSafari(failed) -->
-  <test name="SingleTestIE(failed)" parallel="tests">
-    <parameter name="environment" value="wind10edge"/>
-    <parameter name="config" value="bs.cbt.testSuite.conf.json"/>
-    <classes>
-      <class name="testSuite.LandingPage">
-        <methods>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="testLandingPage"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- testSuite.LandingPage -->
-    </classes>
-  </test> <!-- SingleTestIE(failed) -->
-  <test name="SingleTestiOS(failed)" parallel="tests">
-    <parameter name="environment" value="win7ie"/>
-    <parameter name="config" value="bs.cbt.testSuite.conf.json"/>
-    <classes>
-      <class name="testSuite.LandingPage">
-        <methods>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="setUp"/>
-          <include name="testLandingPage"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- testSuite.LandingPage -->
-    </classes>
-  </test> <!-- SingleTestiOS(failed) -->
 </suite> <!-- Failed suite [Parallel] -->

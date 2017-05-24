@@ -14,7 +14,8 @@
 		"ios": {
 			"browserName": "iPhone",
 			"platform": "MAC",
-			"device": "iPhone 5"
+			"device": "iPhone 6",
+			"browser_version": "8.3"
 		},
 		"win10chrome": {
 			"os": "Windows",

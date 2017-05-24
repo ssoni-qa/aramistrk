@@ -45,18 +45,16 @@ public class CrossBrowserTestingTestNG {
 
 
 
-	@BeforeClass
-	@org.testng.annotations.Parameters(value={"os", "browser","testEnv"})
-	public void setUp(String os,String browser,String testEnv) throws Exception {
+	@BeforeClass(alwaysRun=true)
+	@org.testng.annotations.Parameters(value={"os", "browser"})
+	public void setUp(String os,String browser) throws Exception {
 
 		DesiredCapabilities capability = new DesiredCapabilities();
 		capability.setCapability("os_api_name", os);
 		capability.setCapability("browser_api_name", browser);
-		capability.setCapability("name", testEnv);
 		capability.setCapability("max_duration", "1200");
-		capability.setCapability("screen_resolution", "1024x768");
-		//capability.setCapability("record_video", "true");
-		//capability.setCapability("record_network", "true");
+		capability.setCapability("record_video", "true");
+		capability.setCapability("record_network", "true");
 
 		URI uri = new URI("http://" + username + ":" + api_key + "@hub.crossbrowsertesting.com:80/wd/hub");
 		driver = new RemoteWebDriver(uri.toURL(),capability);
@@ -65,7 +63,7 @@ public class CrossBrowserTestingTestNG {
 		//driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		wc= new WebDriverWait(driver,15);
-		extent = new ExtentReports("./etestReport/"+testEnv+".html",true,NetworkMode.OFFLINE);
+		extent = new ExtentReports("./etestReport/"+os+".html",true,NetworkMode.OFFLINE);
 
 	}  
 
