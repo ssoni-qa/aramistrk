@@ -313,10 +313,15 @@ public class LandingPage extends BrowserStackTestNGTest{
 			{				
 				System.out.println("Survey Offer Button Linkout Pages.");
 				Thread.sleep(3000);
-				linkbtn.get(0).click();
+				WebElement button=linkbtn.get(0);
+				button.click();
 				System.out.println("Clicked.");
 				ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
-				driver.switchTo().window(tabs1.get(1));
+				try {
+					driver.switchTo().window(tabs1.get(1));
+				} catch (Exception e) {
+					continue;
+				}
 				Thread.sleep(5000);
 				System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
 				landingPageTC.log(LogStatus.PASS, "Open URL on click on button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
@@ -423,7 +428,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 
 			}
 		} catch (Exception e2) {
-			// TODO Auto-generated catch block
+			e2.printStackTrace();
 		}
 		System.out.println("**************************************************************************************************************");
 
@@ -467,7 +472,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 
 			}
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		System.out.println("**************************************************************************************************************");
 
@@ -484,7 +489,6 @@ public class LandingPage extends BrowserStackTestNGTest{
 			wc.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']")));
 			System.out.println("Survey End Page button Linkout.");
 			landingPageTC.log(LogStatus.INFO, "Next Page "+ landingPageTC.addScreenCapture(captureScreenMethod(dest)));
-			//String mainwin=driver.getWindowHandle();
 			Thread.sleep(3000);
 			WebElement endbtn=driver.findElement(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']"));
 			endbtn.click();

@@ -15,7 +15,7 @@
 
 	<test name="SingleTestChrome">
 		<parameter name="config" value="bs.cbt.testSuite.conf.json" />
-		<parameter name="environment" value="ios" />
+		<parameter name="environment" value="android" />
 		<packages>
 			<package name="testSuite"></package>
 		</packages>
