@@ -407,7 +407,11 @@ public class LandingPage extends BrowserStackTestNGTest{
 					Thread.sleep(3000);
 					driver.findElement(By.xpath("//div[@class='iff-campaign-container-regular' and not(@style)]/div/a")).click();
 					ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
-					driver.switchTo().window(tabs1.get(1));
+					try {
+						driver.switchTo().window(tabs1.get(1));
+					} catch (Exception e) {
+						continue;
+					}
 					System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
 					landingPageTC.log(LogStatus.PASS, "Open URL on click on button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
 					driver.close();
@@ -435,6 +439,11 @@ public class LandingPage extends BrowserStackTestNGTest{
 
 
 		try {
+			try {
+				wc.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(driver.findElement(By.cssSelector("iframe[id='sandbox--518d3b8f-6787-458a-bcaf-8bce288d761c']"))));
+			} catch (Exception e) {
+			}
+
 			wc.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//div[@class='iff-campaign-container' and not(@style)]/a"))));
 			System.out.println("Survey Flow Large Banner Flow .");
 			landingPageTC.log(LogStatus.INFO, "Next Page "+ landingPageTC.addScreenCapture(captureScreenMethod(dest)));
@@ -504,6 +513,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 			extent.endTest(landingPageTC);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		System.out.println("**************************************************************************************************************");
