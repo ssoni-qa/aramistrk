@@ -52,7 +52,7 @@ public class CrossBrowserTestingTestNG {
 		DesiredCapabilities capability = new DesiredCapabilities();
 		capability.setCapability("os_api_name", os);
 		capability.setCapability("browser_api_name", browser);
-		capability.setCapability("max_duration", "1200");
+		capability.setCapability("max_duration", "14400");
 		capability.setCapability("record_video", "true");
 		capability.setCapability("record_network", "true");
 

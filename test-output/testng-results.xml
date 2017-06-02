@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Parallel" duration-ms="480079" started-at="2017-05-26T11:46:32Z" finished-at="2017-05-26T11:54:32Z">
+  <suite name="Parallel" duration-ms="1223713" started-at="2017-06-02T12:13:20Z" finished-at="2017-06-02T12:33:44Z">
     <groups>
     </groups>
-    <test name="SingleTestChrome" duration-ms="480079" started-at="2017-05-26T11:46:32Z" finished-at="2017-05-26T11:54:32Z">
+    <test name="TestOnAndroid" duration-ms="766351" started-at="2017-06-02T12:13:20Z" finished-at="2017-06-02T12:26:07Z">
       <class name="testSuite.LandingPage">
-        <test-method status="PASS" signature="setUp(java.lang.String, java.lang.String)[pri:0, instance:testSuite.LandingPage@3f49dace]" name="setUp" is-config="true" duration-ms="7433" started-at="2017-05-26T17:16:32Z" finished-at="2017-05-26T17:16:39Z">
+        <test-method status="PASS" signature="setUp(java.lang.String, java.lang.String)[pri:0, instance:testSuite.LandingPage@27c20538]" name="setUp" is-config="true" duration-ms="48962" started-at="2017-06-02T17:43:20Z" finished-at="2017-06-02T17:44:09Z">
           <params>
             <param index="0">
               <value>
@@ -16,22 +16,50 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[win7ie]]>
+                <![CDATA[android]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="testLandingPage()[pri:0, instance:testSuite.LandingPage@3f49dace]" name="testLandingPage" duration-ms="466828" started-at="2017-05-26T17:16:39Z" finished-at="2017-05-26T17:24:26Z">
+        <test-method status="PASS" signature="testLandingPage()[pri:0, instance:testSuite.LandingPage@27c20538]" name="testLandingPage" duration-ms="716826" started-at="2017-06-02T17:44:09Z" finished-at="2017-06-02T17:56:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testLandingPage -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:testSuite.LandingPage@3f49dace]" name="tearDown" is-config="true" duration-ms="5795" started-at="2017-05-26T17:24:26Z" finished-at="2017-05-26T17:24:32Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testSuite.LandingPage@27c20538]" name="tearDown" is-config="true" duration-ms="532" started-at="2017-06-02T17:56:06Z" finished-at="2017-06-02T17:56:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- testSuite.LandingPage -->
-    </test> <!-- SingleTestChrome -->
+    </test> <!-- TestOnAndroid -->
+    <test name="TestOnWin10Chrome" duration-ms="457250" started-at="2017-06-02T12:26:07Z" finished-at="2017-06-02T12:33:44Z">
+      <class name="testSuite.LandingPage">
+        <test-method status="PASS" signature="setUp(java.lang.String, java.lang.String)[pri:0, instance:testSuite.LandingPage@55d56113]" name="setUp" is-config="true" duration-ms="8033" started-at="2017-06-02T17:56:07Z" finished-at="2017-06-02T17:56:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[bs.cbt.testSuite.conf.json]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[win10chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="testLandingPage()[pri:0, instance:testSuite.LandingPage@55d56113]" name="testLandingPage" duration-ms="439194" started-at="2017-06-02T17:56:15Z" finished-at="2017-06-02T18:03:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLandingPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:testSuite.LandingPage@55d56113]" name="tearDown" is-config="true" duration-ms="10020" started-at="2017-06-02T18:03:34Z" finished-at="2017-06-02T18:03:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- testSuite.LandingPage -->
+    </test> <!-- TestOnWin10Chrome -->
   </suite> <!-- Parallel -->
 </testng-results>

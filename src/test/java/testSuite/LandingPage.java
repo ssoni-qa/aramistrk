@@ -7,7 +7,6 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 import crossBrowserTesting.BrowserStackTestNGTest;
-import crossBrowserTesting.CrossBrowserTestingTestNG;
 import crossBrowserTesting.Page;
 
 import static org.testng.Assert.*;
@@ -19,7 +18,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LandingPage extends BrowserStackTestNGTest{
 	private String baseUrl;
@@ -64,26 +62,31 @@ public class LandingPage extends BrowserStackTestNGTest{
 			landingPageTC.log(LogStatus.INFO, "Entered Last Name -"+lname);
 
 			System.out.println("Enter email address.");
-			ele.emailAddress.clear();
-			ele.emailAddress.sendKeys("dummyemail@domain.com");
+			ele.emailAddress.click();
+			ele.emailAddress.sendKeys("dummyemail@");
+			Thread.sleep(2000);
+			driver.findElement(By.cssSelector("li.suggestion.selected > strong")).click();
+
+
 			email=ele.emailAddress.getAttribute("value");
+			System.out.println(email);
 			landingPageTC.log(LogStatus.INFO, "Entered Email Address  -"+email);
 
 			new Select(ele.month).selectByVisibleText("August");
 			dom=ele.month.getAttribute("value");
-			System.out.println("Select Month of birth.");
+			System.out.println("Select Month of birth."+dom);
 			landingPageTC.log(LogStatus.INFO, "Selected Date Month -"+dom);
 
 
 			new Select(ele.day).selectByVisibleText("26");
 			dob=ele.day.getText();
-			System.out.println("Select Date of birth.");
+			System.out.println("Select Date of birth."+dob);
 			landingPageTC.log(LogStatus.INFO, "Selected Date  - 26");
 
 
 			new Select(ele.year).selectByVisibleText("1988");
 			doy=ele.year.getText();
-			System.out.println("Select year of birth.");
+			System.out.println("Select year of birth."+doy);
 			landingPageTC.log(LogStatus.INFO, "Selected Year - 1988");
 
 
@@ -199,7 +202,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 
 			while(true){
 				wc.until(ExpectedConditions.elementToBeClickable(ele.yesBtn));
-				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele.yesBtn);
+				//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele.yesBtn);
 				if(ele.yesBtn.isDisplayed())
 
 				{
@@ -220,8 +223,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 			}
 
 		} catch (Exception e2) {
-			// TODO Auto-generated catch block
-
+			e2.printStackTrace();
 		}
 		System.out.println("**************************************************************************************************************");
 
@@ -236,13 +238,14 @@ public class LandingPage extends BrowserStackTestNGTest{
 			landingPageTC.log(LogStatus.INFO, "Test Case -Check all filed must be auto filled with correct data.");			
 			try {
 				assertEquals(lname,"Last Name");
-				assertEquals(email,"dummyemail@domain.com");
+				assertEquals(email,"dummyemail@gmail.com");
 				assertEquals(dom.getFirstSelectedOption().getText(), "August");
 				assertEquals(dod.getFirstSelectedOption().getText(), "26");
 				assertEquals(doy.getFirstSelectedOption().getText(), "1988");
 				landingPageTC.log(LogStatus.PASS,
 						"Check all field must be auto filled with correct data."
 								+ landingPageTC.addScreenCapture(captureScreenMethod(dest)));
+				System.out.println("Pass");
 
 
 			} catch (AssertionError e) {
@@ -307,37 +310,37 @@ public class LandingPage extends BrowserStackTestNGTest{
 		try {
 
 			while(true){
-			wc.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='blockFormButtonList']/button")));
-			List<WebElement> linkbtn=driver.findElements(By.xpath("//div[@class='blockFormButtonList']/button"));
-			if(linkbtn.get(0).isDisplayed())
-			{				
-				System.out.println("Survey Offer Button Linkout Pages.");
-				Thread.sleep(3000);
-				WebElement button=linkbtn.get(0);
-				button.click();
-				System.out.println("Clicked.");
-				ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
-				try {
-					driver.switchTo().window(tabs1.get(1));
-				} catch (Exception e) {
+				wc.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='blockFormButtonList']/button")));
+				List<WebElement> linkbtn=driver.findElements(By.xpath("//div[@class='blockFormButtonList']/button"));
+				if(linkbtn.get(0).isDisplayed())
+				{				
+					System.out.println("Survey Offer Button Linkout Pages.");
+					Thread.sleep(3000);
+					WebElement button=linkbtn.get(0);
+					button.click();
+					System.out.println("Clicked.");
+					ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
+					try {
+						driver.switchTo().window(tabs1.get(1));
+					} catch (Exception e) {
+						continue;
+					}
+					Thread.sleep(5000);
+					System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
+					landingPageTC.log(LogStatus.PASS, "Open URL on click on button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
+					driver.close();
+					Thread.sleep(2000);
+					driver.switchTo().window(tabs1.get(0));
 					continue;
 				}
-				Thread.sleep(5000);
-				System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
-				landingPageTC.log(LogStatus.PASS, "Open URL on click on button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
-				driver.close();
-				Thread.sleep(2000);
-				driver.switchTo().window(tabs1.get(0));
-				continue;
+				else
+				{
+					break;
+				}
 			}
-			else
-			{
-				break;
-			}
-		}
 
 		} catch (Exception e1) {
-            e1.printStackTrace();
+			e1.printStackTrace();
 		}
 		System.out.println("**************************************************************************************************************");
 
@@ -415,13 +418,14 @@ public class LandingPage extends BrowserStackTestNGTest{
 					System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
 					landingPageTC.log(LogStatus.PASS, "Open URL on click on button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
 					driver.close();
-					Thread.sleep(2000);
+					//Thread.sleep(2000);
 					driver.switchTo().window(tabs1.get(0));
 					driver.switchTo().defaultContent();
 					wc.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(driver.findElement(By.cssSelector("iframe[id='sandbox--518d3b8f-6787-458a-bcaf-8bce288d761c']"))));
 					landingPageTC.log(LogStatus.PASS, "Next Page"+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
 					continue;
 				}
+
 				else
 				{
 					landingPageTC.log(LogStatus.INFO, "Done");
@@ -442,6 +446,8 @@ public class LandingPage extends BrowserStackTestNGTest{
 			try {
 				wc.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(driver.findElement(By.cssSelector("iframe[id='sandbox--518d3b8f-6787-458a-bcaf-8bce288d761c']"))));
 			} catch (Exception e) {
+
+
 			}
 
 			wc.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//div[@class='iff-campaign-container' and not(@style)]/a"))));

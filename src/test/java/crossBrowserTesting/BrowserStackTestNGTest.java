@@ -45,7 +45,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 
 public class BrowserStackTestNGTest {
-	public  WebDriver driver;
+	public  RemoteWebDriver driver;
 	public WebDriverWait wc;
 	private Local l;
 	public  ExtentReports extent;
@@ -114,10 +114,12 @@ public class BrowserStackTestNGTest {
 			l.stop();
 		}
 		driver = new RemoteWebDriver(new URL("http://"+username+":"+accessKey+"@"+config.get("server")+"/wd/hub"), capabilities);
+		//driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		/*ChromeOptions options = new ChromeOptions();
 		options.addArguments("disable-infobars");
 		System.setProperty("webdriver.chrome.driver", "C://Users//COD//Desktop//chromedriver_win32");
 		driver= new ChromeDriver(options);*/
+
 		wc=new WebDriverWait(driver, 30);
 		extent = new ExtentReports("./etestReport/"+environment+".html",false,NetworkMode.OFFLINE);
 	}

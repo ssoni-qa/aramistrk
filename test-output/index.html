@@ -54,7 +54,7 @@
                 </li>
                 <li>
                   <a href="#" class="navigator-link " panel-name="testlist-Parallel">
-                    <span class="test-stats">1 test</span>
+                    <span class="test-stats">2 tests</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">2 methods,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -100,6 +100,11 @@
                       <a href="#" panel-name="suite-Parallel" class="show-methods passed suite-Parallel"> (show)</a> <!-- show-methods passed suite-Parallel -->
                     </span>
                     <div class="method-list-content passed suite-Parallel">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Parallel" title="testSuite.LandingPage" hash-for-method="testLandingPage">testLandingPage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
                       <span>
                         <img width="3%" src="passed.png"/>
                         <a href="#" class="method navigator-link" panel-name="suite-Parallel" title="testSuite.LandingPage" hash-for-method="testLandingPage">testLandingPage</a> <!-- method navigator-link -->
@@ -130,6 +135,13 @@
                   <span class="method-name">testLandingPage</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="testLandingPage">
+                  </a> <!-- testLandingPage -->
+                  <span class="method-name">testLandingPage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Parallel-class-passed -->
         </div> <!-- panel Parallel -->
@@ -142,8 +154,8 @@
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite thread-count=&quot;1&quot; guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Parallel&quot;&gt;
-  &lt;test name=&quot;SingleTestChrome&quot;&gt;
-    &lt;parameter name=&quot;environment&quot; value=&quot;win7ie&quot;/&gt;
+  &lt;test name=&quot;TestOnAndroid&quot;&gt;
+    &lt;parameter name=&quot;environment&quot; value=&quot;android&quot;/&gt;
     &lt;parameter name=&quot;config&quot; value=&quot;bs.cbt.testSuite.conf.json&quot;/&gt;
     &lt;packages&gt;
       &lt;package name=&quot;testSuite&quot;/&gt;
@@ -151,7 +163,17 @@
     &lt;classes&gt;
       &lt;class name=&quot;testSuite.LandingPage&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- SingleTestChrome --&gt;
+  &lt;/test&gt; &lt;!-- TestOnAndroid --&gt;
+  &lt;test name=&quot;TestOnWin10Chrome&quot;&gt;
+    &lt;parameter name=&quot;environment&quot; value=&quot;win10chrome&quot;/&gt;
+    &lt;parameter name=&quot;config&quot; value=&quot;bs.cbt.testSuite.conf.json&quot;/&gt;
+    &lt;packages&gt;
+      &lt;package name=&quot;testSuite&quot;/&gt;
+    &lt;/packages&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;testSuite.LandingPage&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- TestOnWin10Chrome --&gt;
 &lt;/suite&gt; &lt;!-- Parallel --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -163,7 +185,10 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">SingleTestChrome (1 class)</span>
+                <span class="test-name">TestOnAndroid (1 class)</span>
+              </li>
+              <li>
+                <span class="test-name">TestOnWin10Chrome (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -189,16 +214,20 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(2);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'testLandingPage')
 data.setCell(0, 2, 'testSuite.LandingPage')
-data.setCell(0, 3, 466828);
+data.setCell(0, 3, 716826);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'testLandingPage')
+data.setCell(1, 2, 'testSuite.LandingPage')
+data.setCell(1, 3, 439194);
 window.suiteTableData['Parallel']= { tableData: data, tableDiv: 'times-div-Parallel'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 7 minutes</span>
+              <span class="suite-total-time">Total running time: 19 minutes</span>
               <div id="times-div-Parallel">
               </div> <!-- times-div-Parallel -->
             </div> <!-- times-div -->
@@ -226,16 +255,28 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">testSuite.LandingPage</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
-                <span class="method-name">setUp(bs.cbt.testSuite.conf.json, win7ie)</span>
+                <span class="method-name">setUp(bs.cbt.testSuite.conf.json, android)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">testLandingPage</span>
-                <span class="method-start">7433 ms</span>
+                <span class="method-start">48962 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">474263 ms</span>
+                <span class="method-start">765790 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp(bs.cbt.testSuite.conf.json, win10chrome)</span>
+                <span class="method-start">766438 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">testLandingPage</span>
+                <span class="method-start">774471 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">1213666 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
