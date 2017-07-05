@@ -8,8 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
+import java.net.ServerSocket;
 import java.net.URI;
+import java.net.URL;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
@@ -19,7 +22,9 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.NetworkMode;
 
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,25 +47,28 @@ public class CrossBrowserTestingTestNG {
 	public  File destination;
 	public  String testName;
 	String reportDate;
+	ServerSocket socket;
 
 
 
-	@BeforeClass(alwaysRun=true)
+
+
+	@BeforeClass
 	@org.testng.annotations.Parameters(value={"os", "browser"})
 	public void setUp(String os,String browser) throws Exception {
 
 		DesiredCapabilities capability = new DesiredCapabilities();
 		capability.setCapability("os_api_name", os);
 		capability.setCapability("browser_api_name", browser);
-		capability.setCapability("max_duration", "14400");
-		capability.setCapability("record_video", "true");
-		capability.setCapability("record_network", "true");
+		//capability.setCapability("record_video", "true");
+		//capability.setCapability("record_network", "true");
 
-		URI uri = new URI("http://" + username + ":" + api_key + "@hub.crossbrowsertesting.com:80/wd/hub");
-		driver = new RemoteWebDriver(uri.toURL(),capability);
-
+		//driver = new RemoteWebDriver(new URL("http://" + username + ":" + api_key +"@hub.crossbrowsertesting.com:80/wd/hub"), capability);
 		//System.setProperty("webdriver.chrome.driver", "C:/Users/COD/Desktop/chromedriver.exe");
-		//driver = new ChromeDriver();
+		driver = new ChromeDriver();
+		//System.setProperty("webdriver.safari.noinstall", "true"); //To stop uninstall each time
+
+		// driver = new SafariDriver();
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		wc= new WebDriverWait(driver,15);
 		extent = new ExtentReports("./etestReport/"+os+".html",true,NetworkMode.OFFLINE);
@@ -122,7 +130,7 @@ public class CrossBrowserTestingTestNG {
 		return response.getBody();
 	}
 
-	@AfterClass (alwaysRun=true) 
+	@AfterClass
 	public void done() throws Exception {  
 		driver.quit();
 		extent.flush();

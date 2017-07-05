@@ -80,7 +80,7 @@ public class Page {
 	@FindBy(linkText="marketing partners")
 	public WebElement mktLink;
 	
-	@FindBy(xpath="/html/body/div[8]/div/button")
+	@FindBy(xpath="html/body/div[9]/div/button")
 	public WebElement closeWindow;
 	
 	//Survey Offer Linkout Pages. 

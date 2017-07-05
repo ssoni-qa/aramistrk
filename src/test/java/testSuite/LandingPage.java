@@ -6,7 +6,7 @@ import org.testng.annotations.*;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import crossBrowserTesting.BrowserStackTestNGTest;
+import crossBrowserTesting.CrossBrowserTestingTestNG;
 import crossBrowserTesting.Page;
 
 import static org.testng.Assert.*;
@@ -19,7 +19,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-public class LandingPage extends BrowserStackTestNGTest{
+public class LandingPage extends CrossBrowserTestingTestNG{
 	private String baseUrl;
 	String fname,lname,email,dom,dob,doy;
 	Boolean run=true;
@@ -40,6 +40,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 		Page ele=PageFactory.initElements(driver, Page.class);
 		//Open Url
 		driver.get("http://go.aramistrk.com/aff_c?offer_id=311&aff_id=1018");
+		driver.manage().deleteAllCookies();
 		landingPageTC.log(LogStatus.INFO, "Test Case - Check for valid Landing Page."+baseUrl);
 		landingPageTC.log(LogStatus.INFO, "Open URL-"+baseUrl);
 		System.out.println("Open Url.");
@@ -66,12 +67,14 @@ public class LandingPage extends BrowserStackTestNGTest{
 			ele.emailAddress.sendKeys("dummyemail@");
 			Thread.sleep(2000);
 			driver.findElement(By.cssSelector("li.suggestion.selected > strong")).click();
+			Thread.sleep(2000);
 
 
 			email=ele.emailAddress.getAttribute("value");
 			System.out.println(email);
 			landingPageTC.log(LogStatus.INFO, "Entered Email Address  -"+email);
 
+			
 			new Select(ele.month).selectByVisibleText("August");
 			dom=ele.month.getAttribute("value");
 			System.out.println("Select Month of birth."+dom);
@@ -155,7 +158,6 @@ public class LandingPage extends BrowserStackTestNGTest{
 
 			try {
 				ele.homeOwner.click();
-				Thread.sleep(2000);
 				assertEquals(ele.homeOwner.getCssValue("background-color"),
 						"rgba(255, 57, 88, 1)");
 				System.out.println("Pass.");
@@ -183,6 +185,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 			}
 
 			ele.continueBtn.click();		
+			driver.getCurrentUrl();
 			landingPageTC.log(LogStatus.PASS,
 					"On Click on 'SEND ME SAMPLES' button." + landingPageTC.addScreenCapture(captureScreenMethod(dest)));
 			landingPageTC.log(LogStatus.INFO, "Done.");
@@ -202,12 +205,12 @@ public class LandingPage extends BrowserStackTestNGTest{
 
 			while(true){
 				wc.until(ExpectedConditions.elementToBeClickable(ele.yesBtn));
-				//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ele.yesBtn);
-				if(ele.yesBtn.isDisplayed())
+				if(ele.yesBtn.isDisplayed()==true)
 
 				{
 					System.out.println("Question Asked - "+ele.lablequest.getText());
 					ele.yesBtn.click();
+					driver.getCurrentUrl();
 					Thread.sleep(2000);
 					landingPageTC.log(LogStatus.PASS,
 							"Click on "+ele.yesBtn.getText()+" button." + landingPageTC.addScreenCapture(captureScreenMethod(dest)));
@@ -223,7 +226,8 @@ public class LandingPage extends BrowserStackTestNGTest{
 			}
 
 		} catch (Exception e2) {
-			e2.printStackTrace();
+			
+			System.out.println("Yes button is not present , exception");
 		}
 		System.out.println("**************************************************************************************************************");
 
@@ -287,6 +291,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 			System.out.println("Verify Marketing Link is Working.");
 			landingPageTC.log(LogStatus.INFO, "Test Case- Verify Marketing Link is Working.");			
 			ele.mktLink.click();
+
 			Thread.sleep(2000);
 			wc.until(ExpectedConditions.elementToBeClickable(ele.closeWindow));
 			landingPageTC.log(LogStatus.PASS,
@@ -297,6 +302,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 			Thread.sleep(2000);
 			System.out.println("Pass.");
 			ele.conContinueBtn.click();
+			driver.getCurrentUrl();
 			landingPageTC.log(LogStatus.INFO, "Done.");			
 			System.out.println("Survey Confirmation Page completed");
 		} catch (Exception e2) {
@@ -310,7 +316,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 		try {
 
 			while(true){
-				wc.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[@class='blockFormButtonList']/button")));
+				wc.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='blockFormButtonList']/button")));
 				List<WebElement> linkbtn=driver.findElements(By.xpath("//div[@class='blockFormButtonList']/button"));
 				if(linkbtn.get(0).isDisplayed())
 				{				
@@ -318,6 +324,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 					Thread.sleep(3000);
 					WebElement button=linkbtn.get(0);
 					button.click();
+					driver.getCurrentUrl();
 					System.out.println("Clicked.");
 					ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
 					try {
@@ -340,7 +347,9 @@ public class LandingPage extends BrowserStackTestNGTest{
 			}
 
 		} catch (Exception e1) {
+			
 			e1.printStackTrace();
+
 		}
 		System.out.println("**************************************************************************************************************");
 
@@ -352,6 +361,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 			System.out.println("6-Survey Offer Linkout Page Single Radio Option.");
 			landingPageTC.log(LogStatus.INFO, "Next Page "+ landingPageTC.addScreenCapture(captureScreenMethod(dest)));
 			driver.findElement(By.cssSelector("input[type='radio'][value='Yes']")).click();
+			driver.getCurrentUrl();
 			System.out.println("Clicked on Radio Yes Button.");
 			ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
 			driver.switchTo().window(tabs1.get(1));
@@ -364,6 +374,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 
 		} catch (Exception e2) {
 			// TODO Auto-generated catch block
+			e2.printStackTrace();
 
 		}
 		System.out.println("**************************************************************************************************************");
@@ -381,7 +392,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 				landingPageTC.log(LogStatus.INFO, "Next Page "+ landingPageTC.addScreenCapture(captureScreenMethod(dest)));
 				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.cssSelector("button[class='impressureButton--large userenroll-next']")));
 				driver.findElement(By.cssSelector("button[class='impressureButton--large userenroll-next']")).click();
-				Thread.sleep(5000);
+				driver.getCurrentUrl();
 				landingPageTC.log(LogStatus.PASS, "On click on 'Continue' button -"+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
 				continue;
 
@@ -389,6 +400,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 		} catch (Exception e2) {
 			System.out.println("Done.");
 			landingPageTC.log(LogStatus.INFO, "Done.");
+			e2.printStackTrace();
 
 		}
 		System.out.println("Done.");
@@ -409,6 +421,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 				{
 					Thread.sleep(3000);
 					driver.findElement(By.xpath("//div[@class='iff-campaign-container-regular' and not(@style)]/div/a")).click();
+					driver.getCurrentUrl();
 					ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
 					try {
 						driver.switchTo().window(tabs1.get(1));
@@ -460,6 +473,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 				if(headerTxt.equals("You Qualify for These Special Offers:"))
 				{
 					driver.findElement(By.xpath("//div[@class='iff-campaign-container' and not(@style)]/a")).click();
+					driver.getCurrentUrl();
 					ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
 					driver.switchTo().window(tabs1.get(1));
 					System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
@@ -488,6 +502,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 			}
 		} catch (Exception e1) {
 			e1.printStackTrace();
+
 		}
 		System.out.println("**************************************************************************************************************");
 
@@ -507,6 +522,7 @@ public class LandingPage extends BrowserStackTestNGTest{
 			Thread.sleep(3000);
 			WebElement endbtn=driver.findElement(By.xpath("//*[@id='i-af7e3c06-cc95-467b-995e-29a1126fdd16']"));
 			endbtn.click();
+			driver.getCurrentUrl();
 			ArrayList<String> tabs1 = new ArrayList<String> (driver.getWindowHandles());
 			driver.switchTo().window(tabs1.get(1));
 			System.out.println("Linkout Marketing Url - "+driver.getCurrentUrl());
@@ -517,13 +533,16 @@ public class LandingPage extends BrowserStackTestNGTest{
 			landingPageTC.log(LogStatus.PASS, "Open URL on click on button."+landingPageTC.addScreenCapture(captureScreenMethod("dest")));
 			landingPageTC.log(LogStatus.INFO, "Completed Successfully");
 			extent.endTest(landingPageTC);
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		}
 
 		System.out.println("**************************************************************************************************************");
 
 	}
-
+	
+	
 }

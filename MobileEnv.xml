@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" name="Suite" parallel="tests">
-	<test name="FirstTest">
-		<parameter name="os" value="Nexus6-And50" />
-		<parameter name="browser" value="MblChrome53" />
+<suite thread-count="1" name="Suite">
+	<!-- <test name="TestOnChrome"> <parameter name="os" value="Win7x64-C1" 
+		/> <parameter name="browser" value="Chrome58x64" /> <classes> <class name="testSuite.LandingPage" 
+		/> </classes> </test> <test name="TestOnFirefox"> <parameter name="os" value="Win7x64-C1" 
+		/> <parameter name="browser" value="FF46x64" /> <classes> <class name="testSuite.LandingPage" 
+		/> </classes> </test> <test name="TestOnIE"> <parameter name="os" value="Win7x64-Base" 
+		/> <parameter name="browser" value="IE11" /> <classes> <class name="testSuite.LandingPage" 
+		/> </classes> </test> 
+	<test name="TestOnSafari">
+		<parameter name="os" value="Mac10.12" />
+		<parameter name="browser" value="Safari10" />
+		<classes>
+			<class name="testSuite.LandingPage" />
+		</classes>
+	</test>-->
+	<test name="TestOnAndroid">
+		<parameter name="os" value="Win7x64-C1" />
+		<parameter name="browser" value="Chrome58x64" />
 		<classes>
 			<class name="testSuite.LandingPage" />
 		</classes>

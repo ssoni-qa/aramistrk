@@ -82,6 +82,12 @@
 			<artifactId>browserstack-local-java</artifactId>
 			<version>0.1.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-safari-driver -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-safari-driver</artifactId>
+			<version>3.4.0</version>
+		</dependency>
 
 	</dependencies>
 </project>

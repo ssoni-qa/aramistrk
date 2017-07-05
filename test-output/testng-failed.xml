@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Parallel]">
-  <test name="TestOnIOs(failed)">
-    <parameter name="environment" value="ios"/>
-    <parameter name="config" value="bs.cbt.testSuite.conf.json"/>
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="TestOnAndroid(failed)">
+    <parameter name="os" value="Win7x64-C1"/>
+    <parameter name="browser" value="Chrome58x64"/>
     <classes>
       <class name="testSuite.LandingPage">
         <methods>
           <include name="setUp"/>
           <include name="testLandingPage"/>
-          <include name="tearDown"/>
         </methods>
       </class> <!-- testSuite.LandingPage -->
     </classes>
-  </test> <!-- TestOnIOs(failed) -->
-</suite> <!-- Failed suite [Parallel] -->
+  </test> <!-- TestOnAndroid(failed) -->
+</suite> <!-- Failed suite [Suite] -->
